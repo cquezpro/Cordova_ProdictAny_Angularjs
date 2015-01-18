@@ -1,0 +1,58 @@
+<div class="container-fluid">
+		<div class="row content-wrapper">
+		<div class="col-xs-6 noMargin"><a href="index.html#/groupslist" class="custom-heading-anchor">CANCEL</a></div>
+			<div class="col-xs-6 noMargin right"><a href="" class="custom-heading-anchor" ng-click="createGroup()">CREATE</a></div>
+			
+			<div class="clearfix"></div>
+			<div class="margin-top-5">
+				<div class="family-list-wrapper-add-edit group-active">
+					<div class="col-xs-12 family-title-add-edit" ></div>
+					<div class="col-xs-12 noPadding">
+<!--					<div class="col-xs-9 noPadding"><img src="img/group-img-new.png" class="img-responsive" /></div>-->
+                    <div class="col-xs-9 noPadding">
+                            <div>
+                                    <img  id='photo0' style="width:30px;height:30px;"  src="{{photo0}}" class="group-responsive pull-left" rel='0'/>
+                                    <img  id='photo1'  style="width:30px;height:30px;"  src="{{photo1}}" class="group-responsive pull-left"  rel='0'/>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div>
+                                    <img   id='photo2'  style="width:30px;height:30px;"  src="{{photo2}}" class="group-responsive pull-left"  rel='0'/>
+                                    <img   id='photo3' style="width:30px;height:30px;"  src="{{photo3}}" class="group-responsive pull-left"  rel='0'/>
+                            </div>
+                    </div>
+					<div class="col-xs-3 noPadding">
+						<img ng-click="showCategories()" class="img-responsive ninja-grp-img" src="img/hitman.png"/>
+						<div class="clearfix"></div>
+						<img style="padding-right: 5px;" class="img-responsive msg-grp-img" src="img/msg-icon.png"/>
+					</div>
+					</div>
+					<div class="add-groups margin-top-bottom-20">
+					<div class="search-category blue">
+						<input ng-model="groupName" type="text" name="groupName" id="groupName" class="search-input blue" placeholder="Group Name..." maxlength="20">
+					</div>
+					<div class="search-category blue margin-bottom-20">
+						<input  ng-model="name" type="text" name="name" class="search-input search-blue" placeholder="Search Friends">
+<!--                                                ng-keyup="getFriends()"-->
+					</div>
+					<div class="row margin-bottom-10" ng-repeat="c in FriendList | filter:name">
+                        
+						<div class="col-xs-2 paddingR10"><img  style="width:30px;height:30px;" id="{{c.id}}_image_holder" ng-click="showProfile()" src="{{c.photo}}" class="img-responsive" /></div>
+						<div class="col-xs-8 noPadding category-text">{{c.username}}</div>
+						
+						<div class="col-xs-2 paddingL">
+							<input id="demo_box_{{c.id}}" class="css-checkbox" type="checkbox" checked="checked" 
+                                                               ng-click="addFriend(c.id)"/>
+							<label for="demo_box_{{c.id}}" name="demo_lbl_{{c.id}}" class="css-label-add-remove"  rel='0'></label>
+						</div>
+					</div>
+					
+				</div>
+					<div class="clearfix"></div>
+				</div>
+				
+			</div>
+			
+			
+			
+		</div>
+    </div> 

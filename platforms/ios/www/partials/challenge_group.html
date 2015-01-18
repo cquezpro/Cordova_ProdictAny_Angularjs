@@ -1,0 +1,113 @@
+<div class="container-fluid" style="padding-top:25px;">
+		<div class="row content-wrapper">
+			<div class="search-category margin-left-right-10">
+				<input ng-model="txtFriends" type="text" name="txtFriends" class="search-input" placeholder="Search Friends">
+			</div>
+			<div class="clearfix"></div>
+			<div class="red-block" id="test">
+				<div class="col-xs-2"></div>
+				<div class="col-xs-8 center">Groups</div>
+				<div class="col-xs-2 noMargin right"></div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="swiper-container s2">
+			<div class="swiper-wrapper">
+			 
+                        <div class="swiper-slide" id='grp_container'>
+                            
+                            <div class="margin-top-10" ng-repeat="c in GroupList | filter:txtFriends" ng-show="GroupList.length">
+				<div class="family-relative-wrapper">
+					<div class="family-list-wrapper-selectable relative" ng-click="addGroup(c.id)"  close-overlay parent='grp_container'>
+                                                <div class="close_wrapper"></div>
+                                                <img class="selected-image" src="img/selected-image.png" >
+						<div class="col-xs-12 family-title" >{{c.name}}</div>
+						<div class="col-xs-12 noPadding">
+						<div class="col-xs-9 noPadding">
+                                                        <div>
+                                                                <img  style="width:30px;height:30px;" src="{{c.photo0}}" class="group-responsive pull-left" />
+                                                                <img  style="width:30px;height:30px;" src="{{c.photo1}}" class="group-responsive pull-left" />
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div>
+                                                                <img  style="width:30px;height:30px;" src="{{c.photo2}}" class="group-responsive pull-left" />
+                                                                <img  style="width:30px;height:30px;" src="{{c.photo3}}" class="group-responsive pull-left" />
+                                                        </div>
+                                                </div>
+                                                    
+						<div class="col-xs-3 noPadding">
+							<img ng-click="showOverlay({{c.id}}, '{{c.name}}')" style="margin:2px 10px 10px 0" class="img-responsive" src="img/hitman.png"/>
+							<div class="clearfix"></div>
+                                                        <a ng-href="index.html#/groups/group_message/{{c.id}}"><img style="padding-right: 5px;" class="img-responsive" src="img/msg-icon.png"/></a>
+							
+						</div>
+						</div>
+						<div class="clearfix"></div>
+						
+					</div>
+					<div class="selected-group-wrapper"><img style="width:70%" src="img/selected-image.png"></div>
+				</div>
+				
+			</div>                           
+			<div ng-show="!GroupList.length && !total_groups_cnt" class="center margin-top-10">You have not created groups yet</div>
+			<div ng-show="!GroupList.length && total_groups_cnt" class="center margin-top-10">There are no groups left for challenge</div>
+			</div>
+			  
+			  
+			</div>
+			<div class="pagination2"></div>
+			</div>
+			<div class="orange-block orange center">
+				<div class="col-xs-12 margin-top-bottom-10">Click Friends to Challenge</div>
+			</div>
+			<div class="clearfix"></div>
+			 <div class="swiper-container s1" id='frnd_container'>
+				<div class="swiper-wrapper">
+				  <div class="swiper-slide">
+					<div class="margin-top-bottom-10" ng-repeat="c in FriendList | filter:txtFriends" ng-show="FriendList.length">                                                
+						<div class="ranking-list-wrapper" ng-click="addFriend(c.id)" close-overlay  parent='frnd_container'>
+                                                   <div class="close_wrapper"></div>
+												<img class="selected-image" src="img/selected-image.png" >
+							<div class="col-xs-12 row" style="margin-left:-5px;">{{c.username}}</div>
+							<div class="col-xs-10 row" >
+                                                            <img ng-src="{{c.photo}}" class="img-responsive" />
+                                                        </div>
+							<div class="col-xs-2 ranking-right-text">1</div>
+							<div class="clearfix"></div>
+							<div class="big-sub-belt black-belt">
+								<span><img src="img/star.png" class="standard-belt-stars" /><img src="img/star.png" class="standard-belt-stars" /><img src="img/star.png" class="standard-belt-stars" /><img src="img/star.png" class="standard-belt-stars" /><img src="img/star.png" class="standard-belt-stars" /></span>
+							  </div>
+						</div>
+						
+					</div>
+                                      <div ng-show="!FriendList.length && !total_friends_cnt" class="center margin-top-10">You don't have any friends yet !</div>
+                                      <div ng-show="!FriendList.length && total_friends_cnt" class="center margin-top-10">There are no friends left for challenge</div>
+				  </div>
+				</div>
+				<div class="pagination"></div>
+			  </div>
+		 </div>
+		</div> 
+<div class="blank-footer-div">&nbsp;</div>  
+
+<div class="overlay" id="overlay"><div class="close-icon" ng-click="hideOverlay()"><img src="img/close-icon.png" class="img-responsive" /></div>
+			<div class="overlay-wrapper">
+			  <div class="margin-top-bottom-20">
+					<div class="search-category friend-overlay-heading">{{group_name}}</div>
+					<div class="row margin-bottom-10" ng-repeat="f in GroupFriends">
+						<div class="col-xs-2 paddingR10"><img ng-click="showProfile()" src="{{f.photo}}" class="img-responsive" /></div>
+						<div class="col-xs-4 noPadding category-text">{{f.username}}</div>
+						<div class="col-xs-4 noPadding"><span class="red-belt belt-wrapper"><img src="img/star.png" class="belt-stars" /><img src="img/star.png" class="belt-stars" /><img src="img/star.png" class="belt-stars" /><img src="img/star.png" class="belt-stars" /><img src="img/star.png" class="belt-stars" /></span></div>
+						<div class="col-xs-2 paddingL">
+							<input id="demo_box_{{f.id}}" class="css-checkbox" type="checkbox" ng-click="addFriend(f.id)"/>
+							<label for="demo_box_{{f.id}}" name="demo_lbl_{{f.id}}" class="css-label-add-remove"></label>
+						</div>
+					</div>
+					
+				</div>
+			  <div class="col-xs-12 margin-top-bottom-15" ng-click="WrapUp()">
+					<div class="col-xs-12 green belt-text borderRadius center" ng-click="challege_group()">
+					CHALLANGE</div>
+					
+				</div>
+			</div>
+		</div>

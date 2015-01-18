@@ -1,0 +1,151 @@
+
+<div class="white-block setscroll">
+	<ul class="nav nav-tabs four-col" id="myTab">
+	  <li class="{{alltime_tab_active}}"><a href="#/journal/alltime" data-toggle="tab">All Time</a></li>
+	  <li class="{{recap_tab_active}}"><a href="#/recap" data-toggle="tab" >Recap</a></li>
+	  <li class="{{repredict_tab_active}}"><a href="#/journal/repredict" data-toggle="tab"  ng-show="other_user_journal!=1">Re-Predict</a></li>
+	  <li class="{{coins_tab_active}}"><a href="#/journal/coins" data-toggle="tab" ng-show="other_user_journal!=1">Coins</a></li>
+	</ul>
+</div>  
+ <div class="tab-content">
+        <div id="allTime" class="tab-pane fade in {{alltime_tab_active}}" ng-show="alltime_tab_active">
+           <div class="pull-left padding10" style="width:100%;" >
+		    <div class="row inner-category-wrapper noMargin margin-top-10" ng-click="showRecap()"  ng-repeat='c in categories_arr'>
+			<div class="row noMargin">
+				<div class="col-xs-2 noPadding"><img class="img-responsive pull-left" src="{{config.imageServerUrl}}{{config.imageCatBig}}{{c.image}}" /></div>
+				<div class="col-xs-10 noPadding"><span class="event-name">{{c.name}}</span></div>
+				<div class="col-xs-12 noPadding">
+<!--					<div class="col-xs-7 noPadding black-belt">
+					<span class="marginL5"><img src="img/star.png" class="stars" /></div>-->
+                 <belt points="{{c.points}}" user="{{profile_user_id}}" catid ="{{c.id}}" ></belt>
+                    
+					<div class="col-xs-5 green-block"><span  ng-click="go_to_page_direct('discussion', {{c.id}})" class="balloon"></span><span class="view-text-black">{{c.disc_time | numtodate}}</span></div>
+				</div>
+				</div>
+			</div>
+		   </div> 
+        </div>
+        <div id="Recap" class="tab-pane fade {{recap_tab_active}}" ng-show="recap_tab_active">
+            <div class="col-xs-12">
+				
+            </div>
+        </div>
+     
+     
+    <div id="RePredict" class="tab-pane fade in {{repredict_tab_active}}" ng-show="repredict_tab_active">
+        <div ng-show="categories_arr.length" class="pull-left" style="width:100%;">
+               <div class="row inner-category-wrapper margin-top-10" ng-repeat="c in categories_arr">
+                    <div class="row noMargin relative">
+                         <div class="col-xs-2 noPadding">
+                             <img class="img-responsive pull-left" src="{{config.imageServerUrl}}{{config.imageCatBig}}{{c.category_image}}" />
+                         </div>
+                         <div class="col-xs-10 noPadding"><span class="event-name">{{c.round_name}}</span></div>
+                         <div class="time-block">{{c.played_date_formated}}</div>
+                         <div class="col-xs-12 noPadding">
+                                 <belt points="{{c.points}}" user="{{c.user_id}}" catid ="{{c.category_id}}" ></belt>
+                                 <div class="col-xs-5 green-block">
+                                     <span ng-click="go_to_page_direct('discussion', {{c.category_id}}, '{{c.category_name}}')" class="balloon"></span>
+<!--                                     <span ng-click="show_discussion({{c.category_id}})" class="balloon"></span>-->
+                                     <span class="view-text-repredict" ng-click="re_predict(c)" id="re_predict_{{c.round_id}}" style="display: none;" >
+                                         {{re_predict_display}}<img src="img/mini-small-coin-icon.png"  />
+                                     </span>
+                                     <span class="view-text-repredict" toggle-display="re_predict_{{c.round_id}}" >Re-Predict</span>
+                                 </div>
+                         </div>
+                   </div>
+                </div>
+        </div>
+<!--        <div ng-show="!categories_arr.length" class="center margin-top-20" >
+            <strog>There are no Round(s) to Re-Predict</strog>
+        </div>-->
+    </div>
+     
+     
+     
+     
+		<div id="#/journal/coins" class="tab-pane {{coins_tab_active}}" ng-show="coins_tab_active">
+             <div class="col-xs-12">
+				<div class="row content-wrapper">
+		<div class="col-xs-12 margin-bottom-10 noPadding">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8 center" style="padding-left: 28px;padding-right: 28px;">
+				<div class="center font13 ErasMediumITC">Rewards</div>
+				<div class="journal-coin-section">{{reward_total_points}}<img src="img/Coin.png" /></div>
+			</div>
+			<div class="col-xs-2"></div>
+		</div>
+		<div class="col-xs-12 noPadding">
+			<div class="col-xs-6 center" style="padding-left:10px;padding-right:7px;">
+				<div class="center font13 ErasMediumITC">Prediction Earned</div>
+				<div class="journal-coin-section">{{prediction_total_points}}<img src="img/Coin.png" /></div>
+			</div>
+			<div class="col-xs-6 center" style="padding-left:7px;padding-right:10px;">
+				<div class="center font13 ErasMediumITC">Earned Thru Friends</div>
+				<div class="journal-coin-section">{{points_through_friends}}<img src="img/Coin.png" /></div>
+			</div>
+		</div>
+		<div class="col-xs-12 noPadding margin-top-bottom-10">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8 center" style="padding-left: 28px;padding-right: 28px;">
+				<div class="center font13 ErasMediumITC">Total Earned</div>
+				<div class="journal-coin-section coin-section-active">{{total_coins}}<img src="img/Coin.png" /></div>
+			</div>
+			<div class="col-xs-2"></div>
+		</div>
+		<div class="orange-block orange">
+			<div class="col-xs-12 center margin-top-bottom-10 ErasDemiITC">Coins Earned Thru Friend</div>
+		</div>
+			<div class="clearfix margin-bottom-10"></div>
+			
+					<ul rn-carousel rn-carousel-buffered rn-carousel-indicator  rn-carousel-swipe="true" class="my-slider ng-cloak" >
+                        <li   >
+							<div class="ranking-list-wrapper" ng-repeat="c in user_coins_arr" >
+								<div class="col-xs-12 family-title-small">{{c.username}}</div>
+								<div class="col-xs-12 noPadding">
+								<div class="col-xs-9 noPadding"><img style="height:60px;width:60px;" ng-click="go_to_page_direct('profile', '{{c.user_id}}', c.username)"  src="{{config.imageServerUrl}}{{config.imageUserSmall}}{{c.photo}}" class="img-responsive" /></div>
+								<div class="col-xs-3 noPadding">
+										<img  style="margin:2px 10px 10px 0" class="img-responsive" src="img/hitman.png"  ng-click="challengeToEntity({{c.user_id}},'user')"/>
+													<div class="clearfix"></div>
+													<img  ng-click="go_to_page_direct('groups', 'messages', c.user_id)"  style="padding-right: 5px;" class="img-responsive" src="img/msg-icon.png"/>
+								</div>
+								</div>
+
+								<div class="clearfix"></div>
+								<div class="gray-dark-coins">
+									<span class="gray-coin-section"><span class="coin-number">{{c.total_coins}}</span><img src="img/mini-small-coin-icon.png" /></span>
+								</div>
+							</div>
+						</li>
+					</ul> 
+			<!-- <div class="swiper-container s3">
+				<div class="swiper-wrapper">
+				  <div class="swiper-slide">
+					<div class="margin-top-bottom-10" ng-repeat='c in user_coins_arr'>
+						<div class="ranking-list-wrapper">
+							<div class="col-xs-12 row" style="margin-left:-5px;">{{c.username}}</div>
+							<div class="col-xs-12 noPadding">
+							<div class="col-xs-9 noPadding"><img  ng-click="go_to_page_direct('profile', '{{c.user_id}}', c.username)"  src="{{config.imageServerUrl}}{{config.imageUserSmall}}{{c.photo}}" class="img-responsive" /></div>
+							<div class="col-xs-3 noPadding">
+								<img  style="margin:2px 10px 10px 0" class="img-responsive" src="img/hitman.png"  ng-click="challengeToEntity({{c.user_id}},'user')"/>
+								<div class="clearfix"></div>
+								<img  ng-click="go_to_page_direct('groups', 'messages', c.user_id)"  style="padding-right: 5px;" class="img-responsive" src="img/msg-icon.png"/>
+							</div>
+							</div>
+						
+							<div class="gray-dark-coins">
+								<span class="gray-coin-section"><span class="coin-number">{{c.total_coins}}</span><img src="img/mini-small-coin-icon.png" /></span>
+							</div>
+						</div>
+						
+						
+				  </div>
+				  
+				</div>
+				<div class="pagination2"></div>
+			</div>
+			
+				</div> -->
+			</div>	
+        </div>
+    </div>
+</div>

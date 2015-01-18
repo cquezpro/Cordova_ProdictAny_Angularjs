@@ -1,0 +1,97 @@
+<div class="menu-wrapper">
+<!--	<div class="search-menu-wrapper">	
+		 <img style=" padding: 5px 0px;width: 25%;margin-top:5px;margin-left:35%;" class="img-responsive" src="img/pdlogo.png" />
+	</div>-->
+	<div class="clearfix"></div>
+        <div class="orange-block no-bottom-border" >
+		<div class="profile-menu-img">
+                    <div>
+<!--                      <div menu-image></div>-->
+                        <a href="#/my_profile"><img src="{{customer.image}}" class="img-responsive-custom" style="border:none;outline:none;text-decoration:none;" border="0"></img></a>
+                    </div>
+                </div>
+                <div class="col-xs-10">
+                    <div  >
+<!--                      <div menu-username></div>-->
+                      <a href="#/my_profile"><span class="ErasDemiITC" style="font-weight:normal;">{{customer.name}}</span></a>
+                    </div>
+                </div>
+	</div>
+	<div class="menu-block blue">
+		<h4 class="menu-heading">GAME PLAY</h4>
+<!--		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Home.png" class="img-responsive"></div>
+                        <div class="col-xs-9 ErasMediumITC"><a href="#/test">Test</a></div>
+		</div>-->
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Home.png" class="img-responsive"></div>
+                        <div class="col-xs-9 ErasMediumITC"><a href="#/home">Home</a></div>
+		</div>
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Categories.png" class="img-responsive"></div>
+            <div class="col-xs-9 ErasMediumITC"><a href="#/category_l1">Categories</a></div>
+                        
+		</div>
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Journal.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="#/journal/alltime">Journal</a></div>
+		</div>
+        
+        <div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Re-Predict.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="#/journal/repredict">Re-Predict</a></div>
+		</div>
+        
+        
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Achievements.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="#/achievements/belts/{{LogginUserId}}">Achievements</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Alerts.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="#/alerts">Alerts</a></div>
+		</div>
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Store.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="#/store">Store</a></div>
+		</div>
+	</div>
+	<div class="menu-block green no-bottom-border">
+		<h4 class="menu-heading">SOCIAL</h4>
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Friends.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="index.html#/groups/friends">Friends</a></div>
+		</div>
+                
+                <div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Group.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="index.html#/groupslist">Groups</a></div>
+		</div>
+                
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Messages.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="index.html#/groups/messages">Messages</a></div>
+		</div>
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Discussions.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="index.html#/discussion">Discussions</a></div>
+		</div>
+	</div>
+	<div class="menu-block red no-bottom-border">
+		<h4 class="menu-heading">SUPPORT</h4>
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Settings.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="#/settings">Settings</a></div>
+		</div>
+		<div class="col-xs-12">
+			<div class="menu-img"><img src="img/icons/Help.png" class="img-responsive"></div>
+			<div class="col-xs-9 ErasMediumITC"><a href="#/help">Help</a></div>
+		</div>
+		<div class="col-xs-12" ng-show="isLoggedIn">                    
+			<div class="menu-img"><img src="img/icons/Logout.png" class="img-responsive"></div>
+                        <div class="col-xs-9 ErasMediumITC"><a href="#/logout">Logout</a></div>
+		</div>
+	</div>
+</div>
+
+

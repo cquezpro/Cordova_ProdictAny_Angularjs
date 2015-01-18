@@ -1,0 +1,40 @@
+<div class="container-fluid ng-scope">
+<div class="row content-wrapper no-pad-bottom" style="margin-top:10px">
+        <div class="row inner-category-send-wrapper"  ng-repeat='c in ItemList track by $index' >
+           <div class="row noMargin" ng-if="c.id!=user_id">
+                <div class="col-xs-1 noPadding"><a href="#" ng-click="go_to_page_direct('profile', {{c.id}})"><img class="img-responsive pull-left margin5" src="{{c.photo}}"></a></div>
+                <div class="col-xs-11 nopad"><span class="discussion-name-left">{{c.comments}}</span></div>
+                <div class="time-stamp-right">{{c.username}} | {{c.created_date}}</div>
+           </div>
+            
+           <div class="row noMargin"  ng-if="c.id==user_id">
+                <div class="col-xs-11 nopad"><span class="discussion-name-right">{{c.comments}}</span></div>
+                <div class="col-xs-1 noPadding"><img class="img-responsive pull-right margin5" src="{{c.photo}}"></div>
+                <div class="time-stamp-left">{{c.username}} | {{c.created_date}}</div>
+           </div> 
+        </div>
+    
+    
+    <div class="forappend"></div>
+
+<!--        <div class="row inner-discussion-receive-wrapper">
+           <div class="row noMargin">
+                <div class="col-xs-11 nopad"><span class="discussion-name-right">Because the Ravens have beat them many times before!</span></div>
+                <div class="col-xs-1 noPadding"><img class="img-responsive pull-right margin5" src="img/img2.png"></div>
+                <div class="time-stamp-left">Justin Lowe | 1d ago</div>
+           </div>
+        </div>-->
+
+        
+</div>
+
+
+<div class="send-wrapper row">
+    <div class="search-category col-xs-10 no-bottom" style="width:80%">
+            <input type="text" name="txtChat" class="send-input " placeholder="Enter content here" ng-model="txtChat"  maxlength="40">
+    </div>
+    <div class="col-xs-2 noPadding">
+            <img src="img/send-img.png" style="margin-left:10px" class="img-320-responsive marginL5" ng-click="save_discussion()">
+    </div>
+</div>
+    </div>

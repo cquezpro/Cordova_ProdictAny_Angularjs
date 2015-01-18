@@ -1,0 +1,20 @@
+<div class="container-fluid ng-scope" >
+		<div class="row content-wrapper" id="user_discussion_id">
+			<div class="row inner-category-wrapper"  ng-repeat='c in ItemList track by $index' id="{{c.id}}">
+                            <!-- Removing this class "close-place " -->
+			   <div class="close-icon close-disscussion" ng-click="block_cat({{c.id}})"><img src="img/close-icon.png" class="img-responsive"></div>
+			   <div class="row noMargin">
+				<div class="col-xs-2 noPadding"><img class="img-responsive pull-left" ng-src="{{imageServerUrl}}{{imageCatBig}}{{c.image}}"></div>
+				<div class="col-xs-10 noPadding"><span class="event-name">{{c.name}}</span></div>
+				<div class="col-xs-12 noPadding">
+                                        
+                    <belt points="{{c.points}}" user="{{user_id}}" catid =" {{c.id}}" ></belt>
+					<div class="col-xs-5 green-block"><span  ng-click="go_to_page_direct('discussion', {{c.id}}, c.name);" class="balloon"></span><span class="view-text-nb">{{c.user_discussion_time}}</span></div>
+				</div>
+				</div>
+			</div>
+			
+		</div>
+    
+        <div class="col-xs-12 discussion-text" ng-hide="discussion_count" style="font-size: 15px;">You are not involved in any discussions.</div>
+    </div>

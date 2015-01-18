@@ -1,0 +1,103 @@
+<div class="white-block no-bottom-border setscroll">
+	<ul class="nav nav-tabs two-col" id="myTab">
+	  <li class="{{settings_active}}"><a href="#/settings" data-toggle="tab">Account</a></li>
+	  <li class="{{profile_active}}"><a href="#/edit_profile" data-toggle="tab">Profile</a></li>
+	</ul>
+</div> 
+<div id="Profile" class="tab-paned faded">
+		<div class="white-block-profile noPadding-all relative" >
+			<img src="{{cover_image}}" class="profile-bg" id="cover_image_id"/>
+			<div class="width:100%;text-align:center;float:left;"  ng-click="getImagePopup()"  data-target="#myModal" >
+				<img src="{{photo}}" class="profile-img-lap-edit" id="profile_image"/>
+				<img src="img/Swap_Picture.png" style="position:absolute;bottom:18px;left:92px;"/>
+                 
+			</div>
+			 <img src="img/Swap_Picture.png" style="position:absolute;bottom:10px;left:10px;background-color: white;" ng-click="getImagePopupCover()"  data-target="#myModalCoverImage" /> 
+		</div>  
+  <div class="container-fluid">
+	<div class="row content-wrapper">
+		<div class="col-xs-12">
+			<form name="profileForm" class="css-form">				
+				<div class="profile-text">Name</div>
+				<div><input type="text" name="txtName" id="txtName" class="profile-input" value="{{fname}} {{lname}}"    maxlength="20"/></div>
+                                
+				<div class="col-xs-5 paddingL">
+					<div class="profile-text">Gender</div>
+					<select name="txtName" id="gender"  ng-model="myGender" class="profile-input"  ng-options="gender.name for gender in genders"></select>
+				</div>
+				<div class="col-xs-7 paddingR">
+					<div class="profile-text">Date of Birth</div>
+					
+					<div><input disabled max="2000-12-31" min="1900-12-31" class="profile-input" type="date" id="dob" name="input" ng-model="dob"
+       placeholder="yyyy-MM-dd" required /></div>
+				</div>
+				<div class="profile-text">Description</div>
+				<div>
+					<textarea rows="3" id="about_me" cols="50" class="text-area"  maxlength="30">{{about_me}}</textarea>
+				</div>
+				
+				<div class="col-xs-5 paddingL">
+					<div class="profile-text">State</div>
+					<div><input type="text" name="state" id="state" class="profile-input" value="{{state_name}}"  maxlength="30"/></div>
+				</div>
+				<div class="col-xs-7 paddingR">
+					<div class="profile-text">City</div>
+					<div><input type="text" name="city" id="city" class="profile-input" value="{{city}}"  maxlength="30"/></div>
+				</div>
+				<div class="profile-text">Favorite Categories</div>
+<!--                ng-click="showFavouriteCategories()"-->
+				<div  ng-click="update_profile(1)" ><input type="text" name="fav_cats" id="fav_cats" class="profile-input" value="{{fav_cats}}" disabled/></div>
+				<div class="profile-text">Location Search</div>
+				<div><input type="text" name="locations" id="locations" class="profile-input width75per" placeholder="Search Locations.."/><div class="pull-right"><img src="img/location.png" ng-click="showLocation()"/></div></div>
+				<div class="profile-text">Local Favorites</div>
+				<div class="col-xs-12 white location-details" ng-repeat="l in locationsArr">
+					<div class="pull-left margin-right-10"><img src="img/remove.png" ng-click="removeLocation({{l.id}})"/></div>
+					<div class="pull-left">{{l.address}}</div>
+					<div class="pull-right"><img src="img/house1.png" ng-if="l.is_home_location==1"/></div>
+					<div class="pull-right"><img src="img/house2.png" ng-if="l.is_home_location==0"/></div>
+				</div>
+				
+                                <div>
+                                    <input type="button" name="submit" value="Submit" ng-click="update_profile(0)"></input>
+                                    <input type="hidden" name="locations_length" ng-model="location_length"></input>
+                                </div>
+			</form>
+		</div>
+	</div>
+  </div> 
+    </div>
+	
+	<!-- Modal -->
+ <div class="modal fade" id="myModalsLocation" ng-hide="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content col-xs-12">
+      <div class=" head-title">
+        
+        <h4 class="modal-title bold" id="myModalLabelsLoc"></h4>
+      </div>
+        
+        <div class="center margin-top-bottom-10" data-dismiss="modal" >
+			please select what would like to do with this location.
+        </div>
+        <div class="col-xs-12 center" style="border-top:1px solid #ccc;">
+			<a href="#myModals" class="padding10 center" style="display:block"  data-dismiss="modal" ng-click="saveAsHome(1)">
+				Set as Home
+			</a>
+		</div>
+		<div class="col-xs-12 center" style="border-top:1px solid #ccc;">
+        <a href="#myModals"  class="padding10 center" style="display:block" data-dismiss="modal" ng-click="saveAsHome(0)">
+            Set as Local Favorite
+        </a> 
+		</div>
+		<div class="col-xs-12 center" style="border-top:1px solid #ccc;">
+		 <a href="#myModals"  class="padding10 center" style="display:block" data-dismiss="modal">
+            Cancel
+        </a> 
+		</div>
+    </div>
+  </div>
+</div> 
+    
+      
+    
+<!--<script src="../js/geolocation_map.js"></script>-->

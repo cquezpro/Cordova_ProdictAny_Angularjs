@@ -1,0 +1,40 @@
+ <div class="container-fluid">
+       <div class="row event-section red view-all-section" ng-show="challenges" >
+            <div class="row noMarginR">
+                    <div class="col-xs-6"><span class="event-title">CHALLENGE</span></div>                    
+            </div>
+            <div class="clearfix"></div>
+            <div class="row inner-wrapper margin-bottom-10 slide-down-container" ng-repeat="challenge in challenges" >
+               <div class="row noMargin">
+                    <div class="col-xs-2 noPadding"><img class="img-responsive pull-left" src="{{challenge.photo}}" /></div>
+                    <div class="col-xs-10 noPadding"  slide-down><span class="event-name">{{challenge.category_name}}</span></div>
+                    <div class="col-xs-12 noPadding">
+                            <belt points="{{challenge.my_points}}" ></belt>					
+                            <div class="col-xs-5 green-block">
+                                <span ng-click="go_to_page_direct('discussion', {{challenge.category_id}});" class="balloon"></span>
+                                <span class="view-text" ng-click="goToRoundPlay({{challenge.category_id}})">ACCEPT</span>
+                            </div>
+                    </div>
+
+                    </div>
+                    <div class="padding10 viewAll center challenge-box">
+                            <span class="accept-all" ng-click="acceptAllChallenges({{challenge.category_id}})">ACCEPT ALL!</span>
+                            <div class="clearfix"></div>
+                            <div class="row margin-bottom-10" ng-repeat="ch in challenge.info" >
+                                    <div class="col-xs-2 paddingR10" simulate-click="belt_{{ch.from_user_id}}_{{ch.category_id}}" >
+                                        <img ng-click="showProfile()" src="{{imageServerUrl}}/{{ch.photo}}" class="img-responsive" />
+                                    </div>
+                                    <div class="col-xs-3 noPadding category-text" simulate-click="belt_{{ch.from_user_id}}_{{ch.category_id}}">{{ch.username}} </div>
+                                    <belt points="{{ch.points}}" user="{{ch.from_user_id}}" username="{{ch.username}}" inline="true" id="belt_{{ch.from_user_id}}_{{ch.category_id}}" catid ="{{ch.category_id}}"  ></belt>
+                                    
+                                    <div class="col-xs-2">
+                                            <input id="chllenge_{{ch.challaenge_id}}" ch_id="{{ch.challaenge_id}}" class="css-checkbox css-checkbox_{{challenge.category_id}}" type="checkbox" />
+                                            <label for="chllenge_{{ch.challaenge_id}}" name="chllenge_{{ch.challaenge_id}}" class="css-label"  ng-click="acceptChallenge(ch.challaenge_id)" ></label>
+                                    </div>                                                
+                            </div>
+                    </div>
+            </div>
+    </div>       		
+</div> 
+
+<div class="clearfix"></div>	

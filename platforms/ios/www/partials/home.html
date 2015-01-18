@@ -1,0 +1,100 @@
+   <div class="container-fluid">       
+		<div class="row event-section orange" ng-show="specialEvents.length" ng-repeat="item in specialEvents">
+			<div class="row noMarginR">
+				<div class="col-xs-6 paddingR"><span class="event-title">SPECIAL EVENT</span></div>
+				<div class="col-xs-6 noPadding">
+                                    <div class="pull-right end-text"><span>Ends: </span>
+                                        <span class="white-color">
+                                        <timer ng-attr-countdown="end_time" interval="1000">
+                                            {{days}}:{{hours}}:{{minutes}}:{{seconds}}
+                                        </timer>
+                                        </span>
+                                    </div>
+                                </div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row category-wrapper margin-bottom-10">
+			   <div class="row noMargin">
+				<div class="col-xs-2 noPadding">
+                                    <img class="img-responsive pull-left" src="{{item.category_image}}" />
+                                </div>
+				<div class="col-xs-10 noPadding"><span class="event-name">{{item.category_name}}</span></div>
+                                
+				<div class="col-xs-12 noPadding">
+                                        <belt points="{{item.user_points}}" user="{{user_id}}" catid ="{{item.category_id}}" ></belt>					
+                                        <div class="col-xs-5 green-block">
+                                            <span ng-click="go_to_page_direct('discussion', {{item.category_id}});" class="balloon"></span>
+                                            <span class="view-text" ng-click="goToSpecialEventPlay({{item.id}}, {{item.category_id}})">PREDICT</span></div>
+                                </div>
+					
+				</div>
+				
+			</div>
+		</div>
+		
+       <div class="row event-section red view-all-section" ng-show="challenges" >
+            <div class="row noMarginR">
+                    <div class="col-xs-6"><span class="event-title">CHALLENGE</span></div>
+                    <div class="col-xs-6 noPadding"><div class="pull-right end-text" ng-show="challengeViewAll" >
+                            <a href="javascript:void(0)" ng-click="viewAllChallenges()"  class="view-all">VIEW ALL</a></div>
+                    </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row inner-wrapper margin-bottom-10 slide-down-container" ng-repeat="challenge in challenges" >
+               <div class="row noMargin">
+                    <div class="col-xs-2 noPadding">
+                        <img class="img-responsive pull-left" src="{{imageCatBig}}{{challenge.category_image}}" />
+                    </div>
+                    <div class="col-xs-10 noPadding"  slide-down><span class="event-name">{{challenge.category_name}}</span></div>
+                    <div class="col-xs-12 noPadding">
+                            <belt points="{{challenge.my_points}}" user="{{user_id}}" catid ="{{challenge.category_id}}"  ></belt>					
+                            <div class="col-xs-5 green-block">
+                                <span ng-click="go_to_page_direct('discussion', {{challenge.category_id}});" class="balloon"></span>
+                                <span class="view-text" ng-click="challengePlay({{challenge.category_id}})">ACCEPT</span>
+                            </div>
+                    </div>
+                 </div>
+                <div class="padding10 viewAll center challenge-box">
+                        <span class="accept-all margin-bottom-10" ng-click="acceptAllChallenges({{challenge.category_id}})">ACCEPT ALL!</span>
+                        <div class="clearfix"></div>
+                        <div class="row margin-bottom-10" ng-repeat="ch in challenge.info" >
+                                <div class="col-xs-2 paddingR10" simulate-click="belt_{{ch.from_user_id}}_{{ch.category_id}}" >
+                                    <img ng-click="showProfile()" src="{{imageServerUrl}}/{{ch.photo}}" class="img-responsive" />
+                                </div>
+                                <div class="col-xs-3 noPadding category-text" simulate-click="belt_{{ch.from_user_id}}_{{ch.category_id}}">
+                                    {{ch.username}}
+                                </div>                     
+                                
+                                <belt points="{{ch.points}}" user="{{ch.from_user_id}}" username="{{ch.username}}" inline="true" id="belt_{{ch.from_user_id}}_{{ch.category_id}}" column="col-xs-5" catid ="{{ch.category_id}}"  ></belt>
+                                <div class="col-xs-2" style="padding-left:7px;">
+                                        <input id="chllenge_{{ch.challaenge_id}}" ch_id="{{ch.challaenge_id}}" class="css-checkbox css-checkbox_{{challenge.category_id}}" type="checkbox" />
+                                        <label for="chllenge_{{ch.challaenge_id}}" name="chllenge_{{ch.challaenge_id}}" class="css-label" ></label>
+                                </div>                                                
+                        </div>
+                </div>
+            </div>
+    </div>
+       
+		
+		
+		
+		<div class="row event-section blue" ng-show="DisplayFavCatSection==1">
+			<div class="row noMarginR">
+				<div class="col-xs-6"><span class="event-title">FAVORITES</span></div>
+				<div ng-show="show_view_all_str==1" class="col-xs-6 noPadding"><div class="pull-right end-text"><a  class="view-all" ng-href="#/list_fav_cat">VIEW ALL</a></div></div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row inner-wrapper margin-bottom-10" ng-repeat="c in fav_cat_arr">
+			   <div class="row noMargin">
+				<div class="col-xs-2 noPadding"><img class="img-responsive pull-left" src="{{imageCatBig}}{{c.image}}" /></div>
+				<div class="col-xs-10 noPadding"><span class="event-name">{{c.name}}</span></div>
+				<div class="col-xs-12 noPadding">
+					 <belt points="{{c.points}}" user="{{user_id}}" catid ="{{c.id}}" ></belt>
+					<div class="col-xs-5 green-block"><span ng-click="show_discussion({{c.category_id}})" class="balloon"></span><span class="view-text"  ng-click="gotoRoundUsingCatId({{c.category_id}})">PREDICT</span></div>
+				</div>
+			  </div>
+			</div>
+		</div>		
+    </div> 
+	
+<div class="clearfix"></div>	

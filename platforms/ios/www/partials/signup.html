@@ -1,0 +1,59 @@
+<div class="content-wrapper">
+<!--ng-click="gotoAvtar();-->
+    <div class="center margin-bottom-10">
+	   <div class="avtar_wrapper">
+			<img ng-src="{{user.profile_image}}"  id="profile_image" width="100px" height="100px" class="img-circle" data-target="#myModal" ng-click="getImagePopup()" />
+	   </div>	
+    </div>    
+
+    
+    <form name="loginForm" novalidate class="css-form">
+        <div class="center margin-bottom-10 ">
+            <input type="text" name="txtUsername" id="txtUsername" ng-model="user.txtUsername" class="big-input" placeholder="Username"  required  ng-pattern="word"  ng-minlength="3" maxlength="20"/>
+                       
+                       <div class="error-wrapper">
+                        <span class="error alert-danger" ng-show="loginForm.txtUsername.$dirty && loginForm.txtUsername.$error.required">
+                        Username Required!
+                        </span>  
+                           <span class="error alert-danger" ng-show="loginForm.txtUsername.$dirty && loginForm.txtUsername.$error.pattern">
+                        Allowed characters are a to z, 0 to 9, -, -
+                        </span>  
+                       </div>
+            
+        </div>
+        <div class="center margin-bottom-10 ">
+            <input type="date" style="width:287px;" name="txtDob" id="txtDob"  ng-model="user.txtDob" placeholder="Date of Birth" class="big-input" required  min="2001-01-02"/>
+            
+               <div class="error-wrapper">
+                <span class="error alert-danger" ng-show="loginForm.txtDob.$dirty && loginForm.txtDob.$error.required">
+                Date of birth Required!
+                </span>
+                </div>
+        </div>
+        
+       
+        
+        
+    </form>
+        
+        <div id="dobinfomodel" class="dobtitle">
+			  <div class="data ErasMediumITC" ng-click="close();" style="display: none;">In accordance with age restriction laws in the United states, we are required to collect all users date of birth.
+<br/>
+<span style="text-align:center;display:block;width:100%;padding: 10px 15px;" class="ErasMediumITC">Not to worry, we will not distribute any of 
+your personal information </span>
+
+            </div>
+            <div class="title ErasDemiITC" ng-click="open();">Why do I have to provide my <span class="ErasBoldITC">date of birth</span>?</div>
+        </div>
+        
+        <div style="height: 20px;"></div>
+        <div class="center margin-bottom-10 ">
+            <button class="btn btn-warning" ng-click="signup1(user)" ng-disabled="isUnchanged(user)"  >
+                <span class="glyphicon glyphicon-log-in"> Proceed</span>
+            </button>
+        </div>    
+    </form>
+
+
+
+

@@ -1,0 +1,34 @@
+<span>
+<div class="col-xs-7 noPadding  {{belt_cls}}" ng-show="!showInline && !showTextOnly">
+<span class="ginginL5" ng-show="!starsLoop.length">
+    <img src="img/star.png" class="stars" style="visibility:hidden;" />
+</span>
+
+<span class="marginL5" ng-repeat="item in starsLoop track by $index">
+    <img src="{{item}}" class="stars" />
+</span>
+</div>
+
+<div class=" paddingR {{column_class}} "   ng-show="showInline && !showTextOnly" id="{{id}}" >    
+    
+<span class=" {{belt_cls}} belt-wrapper" style="width:99%">
+    <span ng-show="starsLoop.length">
+        <span ng-repeat="item in starsLoop track by $index" >
+            <img src="{{item}}" class="{{img_class}}" />
+        </span>
+    </span>
+    
+    <span ng-show="!starsLoop.length">
+        &nbsp;
+        <img src="img/star.png" class="stars" style="display:none;" />
+        <img src="img/star.png" class="stars" style="display:none;" />
+        <img src="img/star.png" class="stars" style="display:none;" />
+        <img src="img/star.png" class="stars" style="display:none;" />
+    </span>
+    
+</span>
+</div>    
+    <div ng-show="!showInline && showTextOnly" >
+        {{_belt_text}}
+    </div>    
+</span>

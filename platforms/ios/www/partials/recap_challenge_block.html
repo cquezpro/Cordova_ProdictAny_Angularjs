@@ -1,0 +1,46 @@
+<!-- challenge header section start -->
+<div class="orange-block">
+        <div class="col-xs-1 paddingR margin-top-10 ErasDemiITC">Challenges</div>
+        <div class="col-xs-9 center margin-top-bottom-10 ErasDemiITC">
+            <span class="green-arrow">
+                {{round.challenges.points}}
+            </span>
+        </div>
+        <div class="col-xs-5 paddingL" style="position:absolute;right:0;">
+                <div class="small-block-wrapper">
+                        <div class="small-block-text ErasMediumITC">TIE</div>
+                        <div class="small-white-block ErasBoldITC">
+                            {{round.challenges.tie}}
+                        </div>
+                </div>
+                <div class="small-block-wrapper">
+                        <div class="small-block-text ErasMediumITC">LOSE</div>
+                        <div class="small-white-block ErasBoldITC">
+                            {{round.challenges.loose}}
+                        </div>
+                </div>
+                <div class="small-block-wrapper">
+                        <div class="small-block-text ErasMediumITC">WIN</div>
+                        <div class="small-black-block ErasBoldITC">
+                            {{round.challenges.win}}
+                        </div>
+                </div>
+        </div>
+</div>
+<!-- challenge header section end -->
+
+<!-- challenge contestant section start -->
+<div class="clearfix"></div>
+<div  class="col-xs-12 noPadding" >
+    <div class="margin-top-bottom-10 " ng-repeat="contestant in round.challenges.contestants track by contestant.id" >
+                <div class="col-xs-1 noPadding paddingT5" style="margin-left:5px;">
+                    <img src="{{imageUserMini}}{{contestant.image}}" class="img-responsive" />
+                </div>
+                <div class="col-xs-6 category-text paddingT5">
+                    {{contestant.username}}
+                </div>
+                <belt points="{{contestant.points}}" user="{{contestant.id}}" catid ="{{slide.id}}" inline="true" column="beltStar" imgclass="star_trim_spaces"></belt>
+                <div class="clearfix"></div>
+    </div>                            
+</div>
+<!-- challenge contestant section end -->

@@ -1,0 +1,75 @@
+  <input type="button" value="Test Facebook" ng-click="testFacebook()">
+  <input type="button" value="Test long Responce" ng-click="testLongResponce()">
+
+<div id="Default" class="contentHolder" predict-scroll>
+<div class="content">
+    asads
+    asads dasdsadsadsadasdasdasdsadsadasdsadsaddsadsadsadasdaasads dasdsadsadsadasdasdasdsadsadasdsadsaddsadsadsadasda  
+    
+    
+</div>
+</div>
+//////////////////////////////////////////////////////
+
+<h2>Test</h2>
+<br/>
+<timer ng-attr-countdown="end_time" interval="1000" >{{hhours}} hours, {{mminutes}} minutes, {{sseconds}} seconds.</timer>
+<table>
+    <tr>
+        <td>Now :</td>
+        <td>{{now}}</td>
+    </tr>
+    <tr>
+        <td>end_time :</td>
+        <td>{{end_time_formated}}</td>
+    </tr>
+    <tr>
+        <td>Diff :</td>
+        <td>{{diff}} | {{diff_formated}} </td>
+    </tr>
+</table>
+
+<hr/>
+
+
+<ul rn-carousel rn-carousel-buffered  rn-carousel-swipe="{{swipe}}" class="my-slider ng-cloak">
+    <li ng-repeat="slide in slides track by slide.label" style="background: #FFF; width : 100%; " >
+        <div class="debug">
+            {{ slide.label }} / {{ slides.length }}
+            <br>
+            carouselIndex: {{ carouselIndex }}<br>
+            carouselBufferIndex: {{ carouselBufferIndex }}
+            <br/>
+            <div style="background: #DADADA; width : 100%;" ng-mousedown="toggleSwipe(0)"  ng-mouseup="toggleSwipe(1)"  >
+                <ul rn-carousel rn-carousel-buffered  class="my-slider ng-cloak">
+                    <li ng-repeat="slide2 in slides2 track by slide2.label" style="background: #DADADA; width : 100%; ">
+                        <div class="debug">
+                            {{ slide2.label }} / {{ slides2.length }}
+                            <br/><br/>When u swipe me upper content will not swipe....<br/>
+                           <br/> ***I and bound with mouseup and down events <br/><br/>
+                            ** For touch devices change my event to touch start and touch end<br/>
+                            
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<hr/>
+
+<button ng-click="blockUI()">Block UI for 2 seconds</button>
+<button ng-click="blockUI('Custom Message')">Block UI for 2 seconds With Custom Message</button>
+
+<hr/>
+
+
+<belt points="14820" ></belt><br/>
+<belt points="4620" ></belt><br/>
+<belt points="1560" ></belt><br/>
+
+<hr/>
+  <br/>
+  <br/>
+  

@@ -1,0 +1,62 @@
+<div class="category_pages" >
+    
+    <div class="white-block">
+            <div class="col-xs-1 noPadding">
+                <img src="img/lessthan.png" class="img-responsive pull-left" />
+            </div>
+            <div class="col-xs-10 center marginTgl">
+                {{slide.name}}
+            </div>
+            <div class="col-xs-1 noPadding"><img src="img/greater.png" class="img-responsive pull-right" /></div>
+    </div>
+    <div class="col-xs-12 wish-title">
+        <div class="font-big">STAR EARNED!</div>
+        <div class="font-small">
+            <belt points="{{slide.total_points}}" user="{{user_id}}" catid ="{{slide.id}}" textonly="true" ></belt>            
+        </div>                
+    </div>
+    <div class="clearfix"></div>
+    <div class="margin-top-bottom-10">
+            <div class="col-xs-4 green-title" style="padding:1% 10px">+{{slide.points}}</div>
+            <belt points="{{slide.total_points}}" user="{{user_id}}" catid ="{{slide.id}}" class="belt-stars"></belt>
+    </div>
+    
+    <!--round slide starts here--> 
+    <div ng-mousedown="toggleSwipe(0)"  ng-mouseup="toggleSwipe(1)"   >
+        <ul rn-carousel rn-carousel-buffered  class="my-slider ng-cloak" rn-carousel-swipe="{{swipeRound}}" >        
+            <li ng-repeat="round in slide.rounds track by round.id" >
+                <div class="debug">
+                    
+                    <!--round header section start-->
+                    <div class="white-block no-bottom-border" style="margin-top:25px">
+                            <div class="col-xs-1 noPadding">
+                                <img src="img/lessthan.png" class="img-responsive pull-left" />
+                                <span class="nav-text">{{round.name}}</span>
+                            </div>
+                            <div class="col-xs-10 center margin-top-bottom-2per">
+                                <span class="green-arrow">
+                                    {{round.points}}
+                                </span>
+                            </div>
+                            <div class="col-xs-1 noPadding">
+                                <img src="img/greater.png" class="img-responsive pull-right" />
+                            </div>
+                    </div>
+                    <!--round header section End-->
+                    
+                    <div class="clearfix"></div>
+                    <div ng-include="'partials/recap_challenge_block.html'"></div>                    
+                    <div class="clearfix"></div>
+                    <div ng-include="'partials/recap_answer_block.html'"></div>   
+                    <div ng-include="'partials/recap_friends_block.html'"></div>   
+                    <!--add before this-->
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--Round slide ends here -->
+</div>
+
+	
+
+

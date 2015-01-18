@@ -1,0 +1,92 @@
+<div class="content-wrapper">
+
+    
+    <form name="loginForm" novalidate class="css-form">
+        
+<!--        <div class="center margin-bottom-10 " >
+            <input type="text" name="txtUsername" id="txtUsername" ng-model="user.txtUsername" class="big-input" placeholder="Enter username"  required  ng-pattern="word"/>
+                       <span class="error">*</span>
+                       <div class="error-wrapper">
+                        <span class="error alert-danger" ng-show="loginForm.txtUsername.$dirty && loginForm.txtUsername.$error.required">
+                        Username Required!
+                        </span>  
+                           <span class="error alert-danger" ng-show="loginForm.txtUsername.$dirty && loginForm.txtUsername.$error.pattern">
+                        Allowed characters are a to z, 0 to 9, -, -
+                        </span>  
+                       </div>
+            
+        </div>-->
+        
+        
+        <div class="center margin-bottom-10 " style="margin-top:30px">
+            <input type="email" name="txtEmail" id="txtEmail" ng-model="user.txtEmail" class="big-input" placeholder="Email"    ng-minlength="3" ng-maxlength="30"  maxlength="30" />
+                       
+                       <div class="error-wrapper">
+<!--                        <span class="error alert-danger" ng-show="loginForm.txtEmail.$dirty && loginForm.txtEmail.$error.required">
+                        Email Required!
+                        </span>                        -->
+<!--                        <span class="error alert-danger" ng-show="loginForm.txtEmail.$dirty && loginForm.txtEmail.$error.email">
+                        Email not valid!
+                        </span>                           -->
+                       </div>
+            
+        </div>
+        <div class="center margin-bottom-10 ">
+            <input type="password" name="txtPass" id="txtPass"  ng-model="user.txtPass" placeholder="Password" class="big-input"     ng-minlength="3"  ng-minlength="3" ng-maxlength="20"  maxlength="20" />
+            
+               <div class="error-wrapper">
+<!--                <span class="error alert-danger" ng-show="loginForm.txtPass.$dirty && loginForm.txtPass.$error.required">
+                Password Required!
+                </span>-->
+                   
+<!--                 <span class="error alert-danger" ng-show="loginForm.txtPass.$dirty && loginForm.txtPass.$error.minlength">
+                Password should be at least 3 characters!
+                </span>  -->
+                </div>
+        </div>
+        
+       
+        <div class="center margin-bottom-10 ">
+             <select id="country" name="country" class="big-input" ng-model="user.country" ng-options="c.name for c in countryList"  required>
+                 <option value="">United States of America</option>
+                 <!--<option value="{{c.countryList[224]}}" name="{{c.countryList['United States of America']}}" selected="selected">United States of America</option>-->
+            </select>
+<!--               <div class="error-wrapper">
+                <span class="error alert-danger" ng-show="loginForm.country.$dirty && loginForm.country.$error.required">
+                Please select the country!
+               </span>
+                </div>-->
+        </div>
+        
+        
+        <div class="center margin-top-bottom-20 ErasDemiITC" style="font-size:11pt;padding:0 10px">
+            By clicking next, you agree to the <img src="img/logo.png"></img>
+            <a ng-click='gotoTerms(user);' href="javascript:void(0);" class="anchor_text ErasBoldITC">Terms of Service & Privacy Policy</a>
+
+        </div>
+        
+        
+        <div class="center margin-bottom-10 ">
+            <button class="btn btn-warning" ng-click="signup2(user)"   >
+                <span class="glyphicon glyphicon-log-in"> Proceed</span>
+            </button>
+        </div>    
+    </form>
+    
+    
+    
+
+</div>
+
+
+<!--<script>
+    var length = myJSONObject.countries.length;
+    
+    var country_dropdown = "<option value=''>Select country</option>";
+    for (var i=0; i<length; i++)
+    {
+        country_dropdown += "<option value='"+myJSONObject.countries[i].id+"'>"+myJSONObject.countries[i].name+"</option>";
+        
+    }
+    $("#country").html(country_dropdown);
+</script>-->

@@ -1,0 +1,37 @@
+<div class="container-fluid">       
+    <div class="row content-wrapper"  >
+        
+        <div class="container-fluid">
+                     <div class="row content-wrapper">
+                             <div class="center padding10 category-text margin-bottom-10">Want to contribute content or sponsor a category? Have an idea for a category that we didn't think of? Send us a message;we'd love to hear from you!</div>
+                             <div class="clearfix"></div>
+                             <div class="margin-left-right-10 margin-bottom-20">
+                                 <select class="select-input" ng-model="selRole" >
+                                     <option value="">I would like to...</option>
+                                     <option value="content_contributor">Become a content contributor</option>
+                                     <option value="category_sponsor">Sponsor a category</option>
+                                     <option value="category_contributor">Suggest a category</option>
+                                 </select>
+                             </div>
+                             <div class="clearfix"></div>
+                             <div class="margin-left-right-10 margin-bottom-20">
+                                 <select class="select-input" ng-model="selCat" >
+                                     <option value="">Select Parent Category</option>                                     
+                                     <option value="{{c.id}}" ng-repeat="c in catListL1">{{c.name}}</option>                                     
+                                     <option value="0">Other</option>
+                                 </select>
+                             </div>
+                             <div class="margin-left-right-10 margin-bottom-20">
+
+                                 <input type="text" ng-model="otherCat" placeholder="Enter category name" ng-show="selCat === '0'" maxlength="100" />
+                             </div>
+                             <div class="clearfix"></div>
+                             <div class="margin-left-right-10 margin-bottom-20">
+                                 <textarea ng-model="txtContribution" rows="8" cols="50" class="text-area" placeholder="Contribution..." ></textarea>
+                             </div>
+                             <div class="clearfix"></div>
+                             <div class="suggestCategory" ng-click="submitRequest()">Submit</div>
+                     </div>
+         </div> 
+    </div>
+</div> 

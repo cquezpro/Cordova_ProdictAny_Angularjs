@@ -1,0 +1,42 @@
+<div class="white-block no-bottom-border">
+	<ul class="nav nav-tabs two-col" id="myTab">
+	  <li><a href="#Account" data-toggle="tab">Account</a></li>
+	  <li  class="active"><a ng-href="#/edit_profile" data-toggle="tab">Profile</a></li>
+	</ul>
+</div> 
+
+<div class="container-fluid">
+    <div class="row content-wrapper">
+        <div class="primary-category">
+            <div class="category-wrap categories-nav" ng-repeat="c in catListL1 track by $index">
+                    <div class="col-xs-2-custom noPadding"><img src="{{imageCatSmall}}{{c.image}}" height="25" width="25"   ng-click="Level1ClickedShow({{c.id}})"/></div>
+                    <div class="col-xs-8 category-nav-text"   ng-click="Level1ClickedShow({{c.id}})">{{c.name}}</div>
+                    <div class="col-xs-2 pull-right noPadding sub-cat" >
+                            <img src="img/down-arrow.png" height="17" width="27" class="pull-right marginTgl" style="display:none"/>
+                            <img src="img/up-arrow.png" height="17" width="27" class="pull-right marginTgl" style="display:block"   ng-click="Level1ClickedShow({{c.id}})"/>				
+                    </div>
+                    
+                     <div class="secondary-category" id="{{c.id}}" >
+                        <div class="category-wrap sub-categories-nav" ng-repeat="L2 in level2catlist">
+                                <div class="col-xs-2-custom noPadding"><img src="{{imageCatSmall}}{{L2.image}}" height="25" width="25" /></div>
+                                <div class="col-xs-7 category-nav-text"  ng-click="Level2ClickedShow({{L2.id}})">{{L2.name}}</div>
+                                <div class="col-xs-2 pull-right noPadding">
+                                        <img src="img/down-arrow.png" height="17" width="27" class="pull-right marginTgl"  ng-click="Level2ClickedShow({{L2.id}})"/>	
+                                </div>
+                                
+                                <div class="tertiary-category" ng-repeat="L3 in level3catlist"  id="{{L2.id}}" ng-show="L2.id == showTertiaryCat">                                    
+                                    <div class="category-wrap tertiary-sub-categories-nav" >
+                                            <div class="col-xs-2-custom noPadding"><img src="{{imageCatSmall}}{{L3.image}}" height="25" width="25" /></div>
+                                            <div class="col-xs-8 category-nav-text">{{L3.name}}</div>
+                                            <div class="col-xs-2 pull-right noPadding">                                                                                                
+                                                    <fav-cat isfav="{{L3.isFav}}" catid="{{L3.id}}" updateparent="save_as_fav(L3.id)"  ></fav-cat>
+<!--                                                    <img src="img/white-heart.png" height="25" width="25" class="pull-right marginTgl" ng-click="save_as_fav({{L3.id}})" id="heart_img_{{L3.id}}" rel="0"/>-->
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>    
+                     </div>    
+                </div>
+          </div>
+      </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container-fluid">       
+    <div class="row content-wrapper"  >
+        <div class="search-category margin-left-right-5">
+                <input type="text" name="txtCatname" class="search-input" ng-model="txtCatname" placeholder="Search Categories" ng-change="categorySearch()">
+<!--ng-keyup="getCatList1()-->
+        </div>
+        <div ng-if="txtCatname.length"  ng-include="'partials/category_search.html'"></div>
+        
+        <div class="category_l1" ng-if="!txtCatname.length" >
+            <div class="row category-wrapper" ng-repeat=" c in catListL1" >
+               <div class="row noMargin" ng-click="getCatList2(c)">
+                    <div class="col-xs-2 noPadding">
+<!--                                    <img class="img-responsive pull-left" src="img/img1.png" />-->
+                        <img class="img-responsive pull-left"  ng-src="{{imageCatBig}}{{c.image}}" />
+                    </div>
+                    <div class="col-xs-9 noPadding">
+                        <span class="event-name">
+                            {{c.name}}
+                        </span>
+                    </div>
+                    <div class="col-xs-1 noPadding">
+                        <img style="margin: 40% 0;" src="img/greater.png" class="img-responsive pull-right">
+                    </div>
+                </div>
+            </div>	
+        </div>
+
+        <div class="suggestCategory" ng-click="suggestCategory()" >Become A Contributor</div>
+    </div>
+</div> 

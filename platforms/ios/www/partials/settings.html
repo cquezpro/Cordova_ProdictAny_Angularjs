@@ -1,0 +1,113 @@
+<div class="white-block no-bottom-border setscroll">
+	<ul class="nav nav-tabs two-col" id="myTab">
+	  <li class="{{settings_active}}"><a href="#/settings" data-toggle="tab">Account</a></li>
+	  <li class="{{profile_active}}"><a href="#/edit_profile" data-toggle="tab">Profile</a></li>
+	</ul>
+</div> 
+<div class="tab-content">
+  <div id="Account" class="tab-pane fade in active" ng-show="settings_active">
+   <div class="container-fluid">
+		<div class="row content-wrapper">
+			<div class="row category-wrapper">
+			   <div class="row noMargin">
+					<div class="account-heading">Basics</div>
+                                        
+					<div>
+						<div class="account-sect margin-right-5per ">
+							<div>Music</div> 
+                                                        <input bs-switch ng-model="music" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >
+							
+						</div>
+						<div class="account-sect margin-right-5per">
+							<div>Sounds</div>
+                                                        <input bs-switch ng-model="sounds" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >
+							
+						</div>
+						<div class="account-sect">
+							<div>Vibration</div>
+                                                        <input bs-switch ng-model="vibration" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >
+							
+						</div>
+					</div>
+			   </div>
+			</div>
+			<div class="row category-wrapper">
+			   <div class="row noMargin">
+					<div class="account-heading">Push Notifications</div>	
+					<div>
+						<div class="account-sect margin-right-5per">
+							<div>Challenges</div>
+                                                        <input bs-switch ng-model="challenges" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >							
+						</div>
+						<div class="account-sect margin-right-5per">
+							<div>Chats</div>
+                                                        <input bs-switch ng-model="chats" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >							
+						</div>
+						<div class="account-sect">
+							<div>Comments</div>
+                                                        <input bs-switch ng-model="comments" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >
+							
+						</div>
+						<div class="account-sect margin-right-5per">
+							<div>Recap</div>
+                                                        <input bs-switch ng-model="rounds" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >
+							
+						</div>
+						<div class="account-sect margin-right-5per">
+							<div>Events</div>
+                                                        <input bs-switch ng-model="events" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >
+							
+						</div>
+						<div class="account-sect">
+							<div>System</div>
+                                                        <input bs-switch ng-model="system" type="checkbox" data-size="mini" data-on-color="success" data-off-color="warning" >
+							
+						</div>
+					</div>
+					
+			   </div>
+			</div>
+			
+			<div class="row category-wrapper">
+			   <div class="row noMargin">
+					<div class="account-heading">Social</div>	
+                                        <div class="account-social-sect margin-right-2per" ng-click="connectToFB()">
+						<div class="col-xs-3 noPadding"><img src="img/facebook.png" class="height-img" /></div>		
+						<div class="col-xs-9 account-social-text-links">Facebook Link</div>
+					</div>
+					<div class="account-social-sect">
+						<div class="col-xs-3 noPadding"><img src="img/twitter.png" class="height-img" /></div>		
+						<div class="col-xs-9 account-social-text-links">Twitter Link</div>
+					</div>
+					<div class="account-social-sect margin-right-2per">
+						<div class="col-xs-3 noPadding"><img src="img/game-center.png" class="height-img" /></div>		
+						<div class="col-xs-9 account-social-text-links">Game Center Link</div>
+					</div>
+					<div class="account-social-sect">
+						<div class="col-xs-3 noPadding"><img src="img/contacts.png" class="height-img" /></div>		
+						<div class="col-xs-9 account-social-text-links">Contacts Link</div>		
+					</div>
+			   </div>
+			</div>
+			<div class="row category-wrapper">
+			   <div class="row noMargin">
+					<div class="account-heading">Other</div>	
+					<div class="account-social-sect margin-right-2per">
+						<div class="col-xs-12 account-social-text" ><a href="#/logout">Logout</a></div>		
+					</div>
+					<div class="account-social-sect">
+						<div class="col-xs-12 account-social-text">Change Password</div>		
+					</div>
+					<div class="account-social-sect margin-right-2per">
+						<div class="col-xs-12 account-social-text">Terms of Service</div>		
+					</div>
+					<div class="account-social-sect">
+						<div class="col-xs-12 account-social-text">Privacy Policy</div>		
+					</div>
+			   </div>
+			</div>
+		</div>
+    </div> 
+  </div>
+    
+</div> 

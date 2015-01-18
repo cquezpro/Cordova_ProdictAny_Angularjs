@@ -1,0 +1,120 @@
+<div class="white-block setscroll">
+	<ul class="nav nav-tabs" id="myTab">
+	  <li class="{{belts_active}}"><a ng-href="index.html#/achievements/belts/{{current_user_id}}/{{current_username}}" data-toggle="tab">Belts</a></li>
+	  <li class="{{badges_active}}"><a ng-href="index.html#/achievements/badges/{{current_user_id}}/{{current_username}}" data-toggle="tab">Badges</a></li>
+	  <li class="{{stats_active}}"><a ng-href="#/achievements/stats/{{current_user_id}}/{{current_username}}" data-toggle="tab">Stats</a></li>
+	</ul>
+</div>  
+ <div class="tab-content">
+        <div id="Belts" class="tab-pane fade in active" ng-if="belts_active=='active'">
+           <div class="col-xs-12 padding-left-right-10">
+           
+			<div class="row inner-category-wrapper noMargin margin-top-10" ng-repeat="c in BeltList">	   
+			   <div class="row noMargin">
+				<div class="col-xs-2 noPadding"><img class="img-responsive pull-left" src="{{c.photo}}" /></div>
+				<div class="col-xs-10 noPadding"><span ng-click="showOverlay({{c.id}})" class="event-name">{{c.name}}</span></div>
+<!--				<div class="col-xs-12 noPadding">
+					<div class="col-xs-7 noPadding black-belt">
+					<span class="marginL5"><img src="img/star.png" class="stars" /></div>
+                    <belt points="{{c.points}}" user="{{c.user_id}}" catid ="{{c.category_id}}" ></belt>
+					<div class="col-xs-5 green-block"><span ng-click="go_to_page_direct('discussion', {{c.id}})" class="balloon"></span><span class="view-text-black">{{c.created_date}}</span></div>
+				</div>-->
+                
+                <div class="col-xs-12 noPadding">
+                                 <belt points="{{c.points}}" user="{{current_user_id}}" catid ="{{c.id}}" ></belt>
+                                 <div class="col-xs-5 green-block">
+                                     <span ng-click="go_to_page_direct('discussion', {{c.category_id}}, '{{c.category_name}}')" class="balloon"></span>
+<!--                                     <span ng-click="show_discussion({{c.category_id}})" class="balloon"></span>-->
+                                     <span class="view-text-black">{{c.created_date}}</span>
+                                     
+                                 </div>
+                         </div>
+                
+				</div>
+			</div>
+			
+		</div> 
+        </div>
+        <div id="Badges" class="tab-pane fade in {{badges_active}}"  ng-if="badges_active=='active'">
+            <div class="col-xs-12 noPadding">
+				<div  class="col-xs-4 badges-list margin-right5per {{c.gray_background}}" ng-click="showPredictionOverlay('{{c.code}}')" ng-repeat="c in BadgeList">
+					<div><img style="margin:0 auto;" src="img/badges/small/{{c.image}}" class="img-responsive" /></div>
+					<div class="padding5 badge-content">{{c.name}}</div>
+				</div>
+				
+<!--                <div ng-show='no_badges==1'>You did not earn any badge yet</div>-->
+			</div>
+        </div>
+        <div id="Stats" class="tab-pane fade in {{stats_active}}" ng-if="stats_active=='active'">
+             <div class="col-xs-12 margin-bottom-10">
+				<div class="small-container-wrapper">
+				  <div class="small-container">
+					<div class="small-title">CORRECT</div>
+					<div class="black-section"><p class="black-section-text">{{catTotalStats.total_correct_predictions}}/{{catTotalStats.total_predictions}}={{catTotalStats.correctness}}%</p></div>
+				  </div>
+				  <div class="small-container">
+					<div class="small-title">CHALLENGES</div>
+					<div class="black-section"><div class="col-xs-4"><span class="clearfix font13">WIN</span><span class="clearfix bold">{{catTotalStats.total_win}}</span></div><div class="col-xs-4"><span class="clearfix font13">TIE</span><span class="clearfix bold">{{catTotalStats.total_tie}}</span></div><div class="col-xs-4"><span class="clearfix font13">LOSE</span><span class="clearfix">{{catTotalStats.total_lost}}</span></div></div>
+				  </div>
+				  <div class="clearfix"></div>
+				</div>
+			</div>	
+			<div class="orange-block orange">
+					<div class="col-xs-12 center">Categories</div>
+			</div>
+			<div class="col-xs-12 margin-bottom-10">	
+				<div class="small-container-wrapper">
+				  <div class="small-container" ng-repeat="cat in catDetailsStats">
+					<div class="small-title">{{cat.cat_name}}</div>
+					<div class="black-section"><p class="black-section-text">{{cat.total_correct_cnt}}/{{cat.total_predict_cnt}}={{cat.correctness}}%</p></div>
+				  </div>
+				  
+                                    
+				  <div class="clearfix"></div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+<div class="overlay" id="overlay">
+			
+                        <span text-align="left">
+                            <img ng-src="img/white-heart.png" ng-show="catTotalStats.fav_cat==0"></img>
+                            <img ng-src="img/red-heart.png"  ng-show="catTotalStats.fav_cat==1"></img>
+                        </span>
+                         <div class="close-icon" ng-click="hideOverlay()"><img src="img/close-icon.png" class="img-responsive" />
+			</div>
+			<div class="overlay-wrapper">
+			  <div class="overlay-title-section">
+				<h3 class="bold">{{catTotalStats.cat_name}}</h3>
+				<p class="sub-title">You are a 3-Star Purplr Belt! (Level 28)</p>
+			  </div>
+			  <div class="big-belt purple-belt">
+				<span class="marginL5"><img src="img/star.png" class="big-stars" /><img src="img/star.png" class="big-stars" /><img src="img/star.png" class="big-stars" /></span>
+			  </div>
+			  <div class="small-container">
+				<div class="small-title">CORRECT</div>
+				<div class="black-section"><p class="black-section-text">{{catTotalStats.total_correct_predictions}}/{{catTotalStats.total_predictions}}={{catTotalStats.correctness}}%</p></div>
+			  </div>
+			  <div class="small-container">
+				<div class="small-title">CHALLENGES</div>
+				<div class="black-section"><div class="col-xs-4"><span class="clearfix">WIN</span><span class="clearfix">{{catTotalStats.total_win}}</span></div><div class="col-xs-4"><span class="clearfix">TIE</span><span class="clearfix">{{catTotalStats.total_tie}}</span></div><div class="col-xs-4"><span class="clearfix">LOSE</span><span class="clearfix">{{catTotalStats.total_lost}}</span></div></div>
+			  </div>
+			  <div class="small-container">
+				<div class="small-title">FRIEND RANKING</div>
+				<div class="black-section"><p class="black-section-text">{{catTotalStats.ranking_in_friends}}/{{catTotalStats.total_friends}}</p></div>
+			  </div>
+			  
+				<div class="col-xs-12 noPadding margin-top-bottom-15">
+					<div class="col-xs-7 yellow belt-text borderRadius">
+					SHARE</div>
+					<div class="col-xs-5 green-block borderRadius"><span ng-click="showDiscussion()" class="balloon"></span><span class="view-text-black">VIEW</span></div>
+				</div>
+			  
+			</div>
+		</div>
+		
+
+
+<div class="clearfix"></div>	
+

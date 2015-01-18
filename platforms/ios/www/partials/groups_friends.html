@@ -1,0 +1,246 @@
+<div class="container-fluid">
+		<div class="row content-wrapper">
+			<div class="search-category margin-left-right-8">
+				<input type="text" name="txtFriends" class="search-input" ng-model="txtFriends" placeholder="Search Friends" ng-keyup="iniitialise()">
+			</div>
+			<div class="clearfix"></div>
+			<div class="red-block" id="test">
+				<div class="col-xs-2"><a href="#/groupadd" class="ErasLightITC">ADD</a></div>
+				<div class="col-xs-8 center ErasDemiITC">Groups</div>
+				<div class="col-xs-2 noMargin right" style="padding-left:5px;"><a href="#/groupforedit" class="ErasLightITC">EDIT</a></div>
+			</div>
+			<div class="clearfix"></div>
+                        <div class="block-slider">
+                        <ul rn-carousel rn-carousel-buffered rn-carousel-indicator  rn-carousel-swipe="true" class="my-slider ng-cloak">
+                            <li ng-repeat="groups in GroupList" >
+                                <div class="family-list-wrapper" ng-repeat="c in groups" >
+					<div class="col-xs-12 family-title"><a style="color:white;text-decoration: none;" >{{c.name}}</a></div>
+					<div class="col-xs-12 noPadding">
+					<div class="col-xs-9 noPadding">
+						<div>
+							<img style="width:30px;height:30px;" src="{{c.photo0}}" class="group-responsive pull-left" />
+							<img  style="width:30px;height:30px;"  src="{{c.photo1}}" class="group-responsive pull-left" />
+						</div>
+						<div class="clearfix"></div>
+						<div>
+							<img  style="width:30px;height:30px;"  src="{{c.photo2}}" class="group-responsive pull-left" />
+							<img  style="width:30px;height:30px;"  src="{{c.photo3}}" class="group-responsive pull-left" />
+						</div>
+					</div>
+					<div class="col-xs-3 noPadding">
+						<img ng-click="challengeToEntity({{c.id}},'group')" style="margin:5px 0px 10px -2px" class="img-responsive" src="img/hitman.png"/>
+						<div class="clearfix"></div>
+						<a ng-href="index.html#/groups/group_message/{{c.id}}"><img  style="padding-right: 5px;margin-left: 0px;" class="img-responsive" src="img/msg-icon.png"/></a>
+					</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+                            </li>
+                        </ul>
+                        </div>
+                        
+			<div class="orange-block orange" id="test1">
+				<ul class="nav nav-tabs four-col" id="myTab">
+				  <li class="{{friends_class}}"><a ng-href="#/groups/friends" data-toggle="tab">Friends</a></li>
+				  <li class="{{invite_class}}"><a ng-href="#/groups/invite"  data-toggle="tab">Invite</a></li>
+				  <li class="{{request_class}}"><a ng-href="#/groups/request" data-toggle="tab">Requests</a></li>
+				  <li class="{{messages_class}}"><a ng-href="#/groups/messages" data-toggle="tab">Messages</a></li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+			<div class="tab-content">
+		  <div id="Friends" class="tab-pane fade in active block-slider" ng-if="type=='friends'">
+                      
+                      <ul rn-carousel rn-carousel-buffered rn-carousel-indicator  rn-carousel-swipe="true" class="my-slider ng-cloak">
+                        <li ng-repeat="friends in list" >
+                            <div class="ranking-list-wrapper" ng-repeat="c in friends"  >
+                                    <div class="col-xs-12 family-title-small">{{c.username}}</div>
+                                    <div class="col-xs-12 noPadding">
+                                    <div class="col-xs-9 noPadding"><img  style="width:57px;height:57px;" ng-click="go_to_page_direct('profile', {{c.id}}, c.username)" ng-src="{{image_server_url}}{{image_server_path}}{{c.photo}}" class="img-responsive" /></div>
+                                    <div class="col-xs-3 noPadding">
+                                            <img  style="margin:0px 0px 7px -4px" class="img-responsive" src="img/hitman.png" ng-click="challengeToEntity({{c.id}},'user')"/>
+                                            <div class="clearfix"></div>
+                                            <a ng-href="index.html#/groups/messages/{{c.id}}"><img  style="padding-right: 5px;margin-left: -2px;margin-bottom: 5px;" class="img-responsive" src="img/msg-icon.png"/></a>
+                                    </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                    <div class="gray-dark">
+                                            <span></span>
+                                      </div>
+                            </div>
+                        </li>
+                    </ul>                      
+		</div>
+                            
+                            
+                            
+                            
+                <div id="Invite" class="tab-pane fade active in block-slider" ng-if="type=='invite'">
+                    
+                    <ul rn-carousel rn-carousel-buffered rn-carousel-indicator  rn-carousel-swipe="true" class="my-slider ng-cloak">
+                        <li ng-repeat="invite in inviteList" >
+                            <div class="ranking-list-wrapper" ng-repeat="c in invite">
+                                    <div class="col-xs-12 family-title-small">{{c.username}}</div>
+                                    <div class="col-xs-12 noPadding">
+                                    <div class="col-xs-9 noPadding"><span><img style="width:50px;height:50px;" ng-click="go_to_page_direct('profile', {{c.id}}, c.username)" src="{{c.photo}}" class="img-responsive"></span></div><span class="predict-img"><img src="{{imageServerUrl}}/images/icons/p_small.PNG"></img></span>
+                                    <div class="col-xs-3 noPadding">
+
+                                    </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                    <div class="gray-dark-icons">
+                                            <span>&nbsp;<!-- <img src="img/facebook.png" class="standard-icons"><img src="img/twitter.png" class="standard-icons"><img src="img/game-center.png" class="standard-icons"><img src="img/contacts.png" class="standard-icons"> --></span>
+                                    </div>
+                            </div>
+                        </li>
+                    </ul>                    
+		</div>
+                            
+                            
+
+                <div id="Requests" class="tab-pane fade active in block-slider" ng-if="type=='request'">
+                    <ul rn-carousel rn-carousel-buffered rn-carousel-indicator  rn-carousel-swipe="true" class="my-slider ng-cloak">
+                        <li ng-repeat="req in requestList" >
+                            <div id="request_{{c.id}}" class="ranking-list-wrapper" ng-repeat="c in req">
+                                <div class="col-xs-12  family-title-small">{{c.username}}</div>
+                                <div class="col-xs-12 noPadding">
+                                <div class="col-xs-9 noPadding"><img  style="width:50px;height:50px;" ng-click="go_to_page_direct('profile', {{c.id}}, c.username)" src="{{c.photo}}" class="img-responsive" /></div>
+
+                                </div>
+
+                                <div class="clearfix"></div>
+                                <div class="gray-dark-challange" >	
+                                        <div class="close-icon-left" id="close_icon_{{c.id}}" ng-if="c.accept_challenge!='Challenge'">
+                                            <img src="img/Close_1.png" class="img-responsive" ng-click="reject({{c.id}})"/>
+                                        </div>
+                                    
+<!--                                     ng-click="challengeToEntity({{c.id}},'user')"-->
+                                    <span class="green request-text borderRadius reuest-embossed {{c.accept_class}}" ng-click="accept_challenge_fn({{c.id}})" id="accept_challenge_str_{{c.id}}">{{c.accept_challenge}}</span>
+                                  </div>
+                            </div>
+                        </li>
+                    </ul>       
+                   	
+		</div>
+                            
+              <div class="margin-top-bottom-10 Reply-Group" ng-hide="no_group_message">
+                        <div class="row inner-category-send-wrapper"  ng-repeat="c in groupShortList">
+                            <div class="message-head-sect group">
+                                <div  id="group_{{c.id}}" ng-click="hide_show_group({{c.id}})" class="noPadding pull-left ErasMediumITC collapse-group" style=""><b>{{c.name}}</b>: {{c.friends}}
+                                </div><div class="col-xs-4 right paddingR" style="font-size: 12px;float: right;">{{c.created_date}}</div>
+								 </div>
+                                <div class="clearfix"></div>
+								 <div class="row noMargin">
+								<div class="col-xs-1 noPadding"><img class="img-responsive pull-left margin5" src="{{c.photo}}" /></div>
+								<div class="col-xs-11 nopad"><span class="discussion-name-left">{{c.comments}}</span></div>
+								<img src="img/reply.png" class="pull-left reply" id="group_Chat_{{c.id}}" ng-click="hide_show_group_chat({{c.id}})"  style="width: 15%;position:absolute;right:8px;">
+								<div class="clearfix"></div>
+								<div class="send-message" style="display:none;" id="send_message_{{c.id}}">
+								<img src="img/hitman.png" ng-click="challengeToEntity('{{msg.opp_user_id}}','user')" class="pull-left" style="margin:3px 0 5px 5px;width: 8%;">
+								<div class="send-message-text margin-left-right-10" style="margin-left:5px;">
+									<input id="direct_message_{{c.id}}" type="text" name="messageTxt" class="send-input dark-yellow" placeholder=""   maxlength="40">
+
+								</div>
+								<input ng-model="msg.opp_user_id" type="hidden" name="opp_user_id" value="{{c.id}}">
+								<img src="img/send-white.png" class="pull-left" style="width: 15%;" ng-click="send_direct_group_message({{c.id}})">
+							</div>
+								</div>
+                            <!--<div class="row noMargin">-->
+								
+						   <!--</div>-->
+							
+                        </div>
+                </div>
+                
+                
+                <div id="Messages" class="tab-pane fade active in" ng-if="type=='messages'">
+			<div class="margin-top-bottom-10">
+				<div class="row inner-category-send-wrapper"  ng-repeat="c in messageList">
+					<div class="message-head-sect">
+					<div class="col-xs-6 noPadding pull-left ErasMediumITC">{{c.username}}</div><div class="col-xs-6 right paddingR ErasMediumITC" style="font-size: 12px;">{{c.created_date}}</div></div>
+				   <div class="row noMargin" ng-if="user_id!=c.id">
+                                        <div class="col-xs-1 noPadding"><img  style="width:30px;height:30px;" class="img-responsive pull-left margin5"  ng-click="go_to_page_direct('profile', {{c.id}})" src="{{c.photo}}"></div>
+                                        <div class="col-xs-11 nopad"><span class="discussion-name-left">{{c.comments}}</span></div>
+				   </div>
+                                    
+                                    
+                                    <div class="row noMargin" ng-if="user_id==c.id">
+						<div class="col-xs-11 nopad"><span class="discussion-name-right sent-text">{{c.comments}}</span></div>
+						<div class="col-xs-1 noPadding"><img   style="width:30px;height:30px;" class="img-responsive pull-right margin5"  ng-click="go_to_page_direct('profile', {{c.id}}, c.username)" src="{{c.photo}}"></div>
+                                    </div>
+                                    
+                                    <div class="send-message"  ng-if="user_id!=c.id">
+					<img src="img/hitman.png" ng-click="challengeToEntity('{{c.id}}','user')" class="pull-left" style="margin:3px 0 5px 5px;width: 8%;">
+					<div class="send-message-text margin-left-right-10" style="margin-left:5px;">
+						<input ng-model="msg.messageTxt" type="text" name="messageTxt" class="send-input dark-yellow" placeholder=""   maxlength="40">
+
+					</div>
+                                        <input ng-model="msg.opp_user_id" type="hidden" name="opp_user_id" value="{{c.id}}">
+					<img src="img/send-white.png" class="pull-left" style="width: 15%;" ng-click="send_message(msg, c.id)">
+                                    </div>
+                                    
+                                </div>
+
+			</div>
+                    
+                    
+                <div class="forappend"></div>
+                <div class="send-message" ng-show="show_send_message_temp">
+					<img src="img/hitman.png" ng-click="challengeToEntity('{{msg.opp_user_id}}','user')" class="pull-left" style="margin:3px 0 5px 5px;width: 8%;">
+					<div class="send-message-text margin-left-right-10" style="margin-left:5px;">
+						<input ng-model="msg.messageTxt" type="text" name="messageTxt" class="send-input dark-yellow" placeholder=""   maxlength="40">
+
+					</div>
+                                        <input ng-model="msg.opp_user_id" type="hidden" name="opp_user_id" value="{{opp_user_id}}">
+					<img src="img/send-white.png" class="pull-left" style="width: 15%;" ng-click="send_message(msg)">
+				</div>
+		</div>     
+                            
+                
+                <div id="Messages" class="tab-pane fade active in" ng-if="type=='group_message'">
+			<div class="margin-top-bottom-10">
+				<div class="row inner-category-send-wrapper" ng-repeat="c in messageList">
+					<div class="message-head-sect">
+					<div class="col-xs-6 noPadding pull-left ErasMediumITC">{{c.username}}</div><div class="col-xs-6 right paddingR">{{c.created_date}}</div></div>
+				   <div class="row noMargin" ng-if="user_id!=c.id">
+                                        <div class="col-xs-1 noPadding"><img class="img-responsive pull-left margin5"  ng-click="go_to_page_direct('profile', {{c.id}})" src="{{c.photo}}"></div>
+                                        <div class="col-xs-11 nopad"><span class="discussion-name-left">{{c.comments}}</span></div>
+				   </div>
+                                    
+                                    
+                                    <div class="row noMargin" ng-if="user_id==c.id">
+						<div class="col-xs-11 nopad"><span class="discussion-name-right sent-text">{{c.comments}}</span></div>
+						<div class="col-xs-1 noPadding"><img class="img-responsive pull-right margin5"  ng-click="go_to_page_direct('profile', {{c.id}})" src="{{c.photo}}"></div>
+                                    </div>
+                                    
+
+                                    
+                                </div>
+                                <div class="forappend"></div>
+                                <div class="send-message"  ng-if="show_send_msg_html==1">
+<!--					<img src="img/hitman1.png" class="pull-left" style="margin:3px 0 5px 5px;width: 8%;">-->
+					<div class="send-message-text margin-left-right-10">
+						<input ng-model="msg.messageTxt" type="text" name="messageTxt" class="send-input dark-yellow" placeholder=""   maxlength="40" >
+
+					</div>
+                                        <input ng-model="msg.opp_user_id" type="hidden" name="opp_user_id" value="{{opp_user_id}}">
+					<img src="img/send-white.png" class="pull-left" style="width: 15%;" ng-click="send_group_message(msg)">
+				</div>
+<!--				<div class="row inner-category-send-wrapper">
+					<div class="message-head-sect"><div class="col-xs-6 noPadding pull-left">Sean Lin</div><div class="col-xs-6 paddingR right">30m ago</div></div>
+					
+				   <div class="row noMargin">
+						<div class="col-xs-1 noPadding"><img class="img-responsive pull-left margin5" src="img/man1.png"></div>
+						<div class="col-xs-11 nopad"><span class="discussion-name-left">Ha Ha</span></div>
+					<img src="img/reply.png" class="pull-left" style="width: 15%;position:absolute;right:8px">
+				   </div>
+				   
+			    </div>-->
+			</div>
+		</div>               
+                            
+    </div> 
+  </div>
+</div> 

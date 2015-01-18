@@ -1,0 +1,125 @@
+<div class="container-fluid content-wrapper">
+  <div class="row-fluid">
+    
+<!--      header-->
+      <div></div>
+      <h3>Create an Account</h3><br/>
+      <form name="regForm" novalidate class="css-form">
+           <table>
+               <tr>                   
+                   <td>
+                       <input type="text" name="txtUsername" placeholder="Username" ng-model="user.username" ng-maxlength="20" ng-minlength="3" ng-pattern='word' required />
+                       <span class="error">*</span>
+                       <div class="error-wrapper">
+                        <span class="error" ng-show="regForm.txtUsername.$dirty && regForm.txtUsername.$error.required">
+                        Username Required!
+                        </span>
+                        <span class="error" ng-show="regForm.txtUsername.$dirty &&regForm.txtUsername.$error.maxlength">
+                        Max 20 characters allowed!
+                        </span>
+                        <span class="error" ng-show="regForm.txtUsername.$dirty && regForm.txtUsername.$error.pattern">
+Allowed characters are a-Z, A-Z 0-9 and _ </span>   
+                       </div>
+                   </td>
+               </tr>
+               
+               <tr>
+                   <td>
+                       <input type="email" ng-model="user.email" name="email" placeholder="Email" required/>
+                       <span class="error">*</span>
+                       <div class="error-wrapper">
+                        <span class="error" ng-show="regForm.email.$dirty && regForm.email.$error.required">
+                        Email Required!
+                        </span>
+                         <span class="error" ng-show="regForm.email.$dirty && regForm.email.$error.email">
+                         Not valid email!
+                         </span>
+                       </div>
+                   </td>                   
+               </tr>
+               
+               <tr>
+                   <td>
+                       <input type="text" name="fname" ng-model="user.fname"  placeholder="First name"  ng-maxlength="50" ng-minlength="3" ng-pattern='word' required />
+                       <span class="error">*</span>
+                       <div class="error-wrapper">
+                        <span class="error" ng-show="regForm.fname.$dirty && regForm.fname.$error.required">
+                        First name Required!
+                        </span>
+                        <span class="error" ng-show="regForm.fname.$dirty && regForm.fname.$error.maxlength">
+                        Max 50 characters allowed!
+                        </span>
+                        <span class="error" ng-show="regForm.fname.$dirty && regForm.fname.$error.minlength">
+                        Min 3 characters required!
+                        </span>
+                        <span class="error" ng-show="regForm.fname.$dirty && regForm.fname.$error.pattern">
+Allowed characters are a-Z, A-Z 0-9 and _ </span> 
+                       </div>
+                   </td>
+               </tr>
+               
+               <tr>
+                   <td>
+                       <input type="text" name="lname" ng-model="user.lname" placeholder="Last name" ng-maxlength="50" ng-minlength="3" ng-pattern='word' required />
+                       <span class="error">*</span>
+                       <div class="error-wrapper">
+                        <span class="error" ng-show="regForm.lname.$dirty && regForm.lname.$error.required">
+                        Last name Required!
+                        </span>
+                        <span class="error" ng-show="regForm.lname.$dirty && regForm.lname.$error.maxlength">
+                        Max 50 characters allowed!
+                        </span>
+                       <span class="error" ng-show="regForm.lname.$dirty && regForm.lname.$error.minlength">
+                        Min 3 characters required!
+                        </span>
+                        <span class="error" ng-show="regForm.lname.$dirty && regForm.lname.$error.pattern">
+Allowed characters are a-Z, A-Z 0-9 and _ </span>
+                       </div>
+                   </td>
+               </tr>
+               
+               <tr>
+                   <td>
+                       <input type="password" ng-model="user.password" name="password" placeholder="Password" ng-maxlength="10"  ng-minlength="3"  required  />
+                       <span class="error">*</span>
+                       <div class="error-wrapper">
+                        <span class="error" ng-show="regForm.password.$dirty && regForm..$dirty && regForm.password.$error.required">
+                        Password Required!
+                        </span>
+                        <span class="error" ng-show="regForm.password.$dirty && regForm.password.$error.maxlength">
+                        Max 10 characters allowed!
+                        </span>
+                        <span class="error" ng-show="regForm.password.$dirty && regForm.password.$error.minlength">
+                        Minimum 3 characters required!
+                        </span>    
+                       </div>
+                   </td>
+               </tr>
+              
+               
+               <tr>
+                   <td >
+                       <input type="password" ng-model="user.cpassword" name="cpassword" placeholder="Confirm Password"  password-match="user.password" required /> 
+                       <span class="error">*</span>
+                       <div class="error-wrapper">
+                       <span class="error" ng-show="regForm.cpassword.$dirty &&  regForm.cpassword.$error.required">
+                        Confirm Password Required!
+                        </span>
+                       <span class="error" ng-show="regForm.cpassword.$dirty &&  regForm.cpassword.$error.unique">
+                        Password mismatched
+                       </span>
+                       </div>
+                   </td>                   
+               </tr>                
+               
+               <tr>
+                   <td>
+                       <button ng-click="register(user)" ng-disabled="isUnchanged(user)"  class="btn btn-success" >Sign Up</button>
+                       <button ng-click="gotoLogin()" class="btn btn-warning" >Sign In</button>
+                   </td>
+               </tr>
+               
+           </table>       
+       </form>
+  </div>
+</div>

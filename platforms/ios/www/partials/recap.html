@@ -1,0 +1,15 @@
+<div class="container-fluid">
+		<div class="row content-wrapper">
+			<ul rn-carousel rn-carousel-buffered  rn-carousel-swipe="{{swipe}}" class="my-slider ng-cloak">
+				<!--recap summary slide end -->
+				<li ng-repeat="slide in slides track by $index" >
+					<div id="summary" ng-if="$index == 0" ng-include="'partials/recap_summary.html'"></div>
+					<div class="debug" ng-if="$index != 0" ng-include="'partials/recap_category_pages.html'"></div>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+			<div class="blank-footer-div" >&nbsp;</div>  
+		</div>
+</div>
+
+

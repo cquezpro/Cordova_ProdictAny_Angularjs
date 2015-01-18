@@ -1,0 +1,38 @@
+<div class="container-fluid" style="padding-top:25px;">
+		<div class="row content-wrapper">
+			<div class="search-category margin-left-right-10">
+				<input ng-model="txtFriends" type="text" name="txtFriends" class="search-input" placeholder="Search Friends">
+			</div>
+			<div class="clearfix"></div>
+			<div class="orange-block orange center">
+				<div class="col-xs-12 margin-top-bottom-10">Click Friends to Challenge</div>
+			</div>
+			<div class="clearfix"></div>
+			 <div class="swiper-container s1" id='frnd_container'>
+				<div class="swiper-wrapper">
+				  <div class="swiper-slide">
+					<div class="margin-top-bottom-10" ng-repeat="c in FriendList | filter:txtFriends" ng-show="FriendList.length">                                                
+						<div class="ranking-list-wrapper" ng-click="addFriend(c.id)" close-overlay parent='frnd_container' >
+                                                   <div class="close_wrapper"></div>
+                                                        <img class="selected-image" src="img/selected-image.png" >
+							<div class="col-xs-12 row" style="margin-left:-5px;">{{c.username}}</div>
+							<div class="col-xs-10 row" >
+                                                            <img ng-src="{{c.photo}}" class="img-responsive" />
+                                                        </div>
+							<div class="col-xs-2 ranking-right-text">1</div>
+							<div class="clearfix"></div>
+							<div class="big-sub-belt black-belt">
+								<span><img src="img/star.png" class="standard-belt-stars" /><img src="img/star.png" class="standard-belt-stars" /><img src="img/star.png" class="standard-belt-stars" /><img src="img/star.png" class="standard-belt-stars" /><img src="img/star.png" class="standard-belt-stars" /></span>
+							  </div>
+						</div>
+						
+					</div>
+                                      <div ng-show="!FriendList.length && !total_friends_cnt" class="center margin-top-10">You don't have any friends yet !</div>
+                                      <div ng-show="!FriendList.length && total_friends_cnt" class="center margin-top-10">There are no friends left for challenge</div>
+				  </div>
+				</div>
+				<div class="pagination"></div>
+			  </div>
+		 </div>
+		</div> 
+<div class="blank-footer-div">&nbsp;</div>  

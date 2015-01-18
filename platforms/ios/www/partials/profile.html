@@ -1,0 +1,46 @@
+
+<div class="white-block-profile noPadding-all relative no-bottom-border ng-scope">
+	<img src="{{cover_image}}" class="profile-bg">
+	<div srtle="width:10%;text-align:center;float:left;"><img src="{{photo}}" class="profile-img-lap"></div>
+</div> 
+<div class="white-block noPadding-all relative ng-scope">
+	<div class="col-xs-4 noPadding">
+		<div class="small-box green" ng-click="challengeToEntity('{{profile_user_id}}', 'user')">CHALLENGE</div>
+		<div class="small-box" ng-click="go_to_page_direct('achievements','belts',user_id,username);">ACHIEVEMENTS</div>
+		<div class="small-box" ng-click="go_to_page_direct('others_journal','alltime',profile_user_id, username);">JOURNAL</div>
+		<div class="small-box" ng-click="send_to_message({{profile_user_id}})">MESSAGE</div>
+	</div>
+	<div class="col-xs-4 noPadding small-center-sect">
+		<div class="center small-center-heading">{{fname}} {{lname}}</div>
+		<div class="center">{{country_name}} {{state_name}} {{home_city}}</div>
+        <div class="center">{{gender}} {{age}}</div>
+        <div class="center">{{about_me}}</div>
+	</div>
+	<div class="col-xs-4 noPadding">
+		<div class="small-box" ng-click="friend_unfriend()">{{unfriend_str}}</div>
+		<div class="small-box" ng-click="go_to_page_direct('friends', user_id, username);">FRIENDS<br><span class="small-box-number">{{friends_count}}</span></div>
+		<div class="small-box" ng-click="block();">{{block_unblock}}</div>
+	</div>
+</div>  
+  <div class="container-fluid ng-scope">
+	<div class="row content-wrapper">
+		<div class="row noMarginR">
+                            <div  ng-show="is_fav_exist==1" class="col-xs-6"><span class="event-title">FAVORITES</span></div>
+                            <div ng-show="show_view_all==1" class="col-xs-6 noPadding"><div class="pull-right end-text"><a href="#/list_fav_cat" ng-click="hideIt = !hideIt"  class="view-all">VIEW ALL</a></div></div>
+			</div>
+			<div class="clearfix"></div>
+                        <div class="row inner-category-wrapper" ng-repeat="c in fav_cat_arr">
+			   <div class="row noMargin">
+				<div class="col-xs-2 noPadding"><img class="img-responsive pull-left" src="{{imageCatBig}}{{c.image}}"></div>
+				<div class="col-xs-10 noPadding"><span ng-click="showOverlay()" class="event-name">{{c.name}}</span></div>
+				<div class="col-xs-12 noPadding">
+					<div class="col-xs-7 noPadding black-belt">
+					<span class="marginL5"><img src="img/star.png" class="stars"></span></div>
+					<div class="col-xs-5 green-block"><span ng-click="go_to_page_direct('discussion', {{c.category_id}});" class="balloon"></span><span class="view-text" ng-click="gotoRoundUsingCatId({{c.category_id}})">PREDICT</span></div>
+				</div>
+				</div>
+			</div>
+			
+	</div>
+	
+  </div> 

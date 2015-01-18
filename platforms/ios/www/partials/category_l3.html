@@ -1,0 +1,37 @@
+<div class="container-fluid">
+		<div class="row content-wrapper">
+			<div class="search-category margin-left-right-5">
+				<input type="text" name="txtCatname" class="search-input" placeholder="Search Categories" ng-model="txtCatname" ng-change="categorySearch()">
+			</div>
+<!--                    ng-keyup="getCatList()-->
+                    <div ng-if="txtCatname.length"  ng-include="'partials/category_search.html'"></div>
+                    <div class="category_l3" ng-if="!txtCatname.length" >
+                    <div class="row category-wrapper relative" ng-repeat=" c in catList | filter:txtCatname">
+                           <div class="disable-container" disable-container ng-show="c.total_playable_rounds == 0"  ></div>                           
+			   <div class="row noMargin">
+				<div class="col-xs-2 noPadding">
+                                    <img class="img-responsive pull-left"  ng-src="{{image_server_url}}{{image_server_path}}{{c.image}}" />
+                                </div>
+				<div class="col-xs-10 noPadding" ng-click="gotoRound(c);">
+                                    <span class="event-name">
+                                        {{c.name}}
+                                    </span>
+                                </div>
+				<div class="col-xs-12 noPadding">
+                                    <belt points="{{c.points}}" user="{{user_id}}" catid =" {{c.id}}" ></belt>
+
+					<div class="col-xs-5 green-block">
+                        <span class="balloon" ng-click="go_to_page_direct('discussion', {{c.id}});"></span>
+                        <span class="view-text"  ng-click="gotoRound(c);">
+                            PREDICT
+                        </span>
+                    </div>
+				</div>
+                        </div>
+			
+                    </div>
+                    </div>
+
+                    <div class="suggestCategory" ng-click="go_to_page_direct('contributor', 'suggest_category');">Suggest a Category</div>
+		</div>
+</div>

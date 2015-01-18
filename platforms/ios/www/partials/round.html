@@ -1,0 +1,56 @@
+<div>
+    <div id="image-loadingPanel" ng-show="!imgLoadComplete">
+        Please wait... {{imgLoading}}% 
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning  progress-bar-striped active" 
+                 role="progressbar" 
+                 aria-valuenow="{{imgLoading}}" 
+                 aria-valuemin="0" 
+                 aria-valuemax="100" 
+                 style="width: {{imgLoading}}%">
+              <span class="sr-only">{{imgLoading}}% Complete</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="display:none;">
+        <span ng-repeat="src in hiddenImages track by $index">            
+            <img src="{{src}}" />
+        </span>
+    </div>
+    
+    <div id="gamePanel" ng-show="imgLoadComplete">
+<!--        <div class="header-cat" >
+                        <div class="col-xs-12 head-title-text">{{category_name}}</div>
+                        <div class="col-xs-12 head-title-text" style="color:#fff">{{round_name}}</div>
+                        <div class="clearfix"></div>
+        </div>-->
+<!--        <div class="blank-div">&nbsp;</div>-->
+        <div class="container-fluid white">
+              <div class="row content-wrapper">
+                      <div class="col-xs-12" style="padding:0px 5px;height:207px;"><h3 class="font-question">{{prediction.title}}</h3></div>
+                      <div class="col-xs-12 center" style="padding-left:5px;padding-right:5px; margin-top: -90px;">
+                          <img src="{{prediction.image}}" class="img-responsive question-img" />
+                      </div>
+                      <div class="clearfix"></div>
+
+                      <div class="question-wrapper" style="height:auto;">
+                              <div class="col-xs-2" style="padding-left:5px;">
+                                  <span class="tile blue"></span>
+                                  <span class="tile {{color}}" ng-repeat ="color in tileColor track by $index"></span>
+
+                              </div>
+                          <div class="col-xs-10 noPadding contentHolder" style="margin-left:-7px;" predict-scroll  rel="scrollInit" >
+                                <div class="noPadding" style="height:150px;" >
+                                  <div class="col-xs-12 answer-wrap-standard" ng-class="{darkyellow: $index == clickedAns, yellow: prediction.re_predict_choice == ans.id }" ng-click="saveAns(ans, $index)"  ng-repeat ="ans in prediction.choices">
+                                      {{ans.choice}}
+                                  </div>                                  
+                                </div>
+                          </div>
+						  <div style="position:absolute;height:195px;background:#aaaaaa;width:20px;right:10px;"><span style="position:absolute;bottom:0px;"><img src="img/down-arrow.png" style="width:20px" /></span><span style="position:absolute;top:0px;"><img src="img/up-arrow.png" style="width:20px" /></span></div>
+						  
+                      </div>
+              </div>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+    <div class="recap-summary-slide">
+    <div class="white-block">
+            <div class="col-xs-1 noPadding"><img src="img/lessthan.png" class="img-responsive pull-left" /></div>
+            <div class="col-xs-10 center marginTgl ErasMediumITC">
+                Results are in: {{totalRounds}}
+                <span ng-show="totalRounds == 1">Round</span>
+                <span ng-show="totalRounds > 1" >Rounds</span>
+            </div>
+            <div class="col-xs-1 noPadding">
+                <img ng-click="showRound2()" src="img/greater.png" class="img-responsive pull-right" />
+            </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-xs-12 wish-title" ng-show="badges_counter>=1">
+        <div class="font-big ">Congratulations!</div>
+        <div class="font-small">
+            You earned {{badges_counter}} badges!
+        </div>        
+    </div>
+
+
+    <div class="col-xs-12 noPadding"  ng-show="badges_counter>=1">
+            <div class="col-xs-4 badges-list margin-right5per"  ng-click="showPredictionOverlay('{{c.badge_code}}')" ng-click="showOverlay()" ng-repeat="c in badges_arr">
+                    <div><img style="margin:0 auto;" src="img/badges/small/{{c.image}}" class="img-responsive" /></div>
+                    <div class="padding5 custom-badges">{{c.name}}</div>
+
+   
+
+    </div>
+    </div>
+    
+    <div class="clearfix"></div>
+    <div  ng-show="categories.length">
+        <div class="margin-top-bottom-20" ng-repeat="c in categories" >
+            <div class="col-xs-7 recap-title">
+                {{c.name}}
+            </div>
+            <div>
+                <h3>
+                    <span ng-show="c.points > 0">+</span>                    
+                    {{c.points}}
+                </h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    
+    
+    <div class="small-container-wrapper">
+        <div class="small-container" ng-show="correct">
+            <div class="small-title">CORRECT</div>
+            <div class="black-section">
+                <p class="black-section-text">
+                    <span>{{correct.correct}}</span>/<span>{{correct.total_answered}}</span>=<span>{{correct.percent}}</span>%
+                </p>
+            </div>
+        </div>
+        <div class="small-container" ng-show="challenge">
+            <div class="small-title">CHALLENGES</div>
+            <div class="black-section">
+                <div class="col-xs-4">
+                    <span class="clearfix font13">WIN</span>
+                    <span class="clearfix bold"><span>{{challenge.win}}</span></span>
+                </div>
+                <div class="col-xs-4">
+                    <span class="clearfix font13">TIE</span>
+                    <span class="clearfix bold"><span>{{challenge.tie}}</span></span>
+                </div>
+                <div class="col-xs-4">
+                    <span class="clearfix font13">LOSE</span>
+                    <span class="clearfix bold"><span>{{challenge.loose}}</span></span>
+                </div>
+            </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="coins-wrapper" ng-show="coins">
+                    <div class="coin-sect">
+                            <div class="pull-left ErasMediumITC"><div>Previous</div>
+                                <div>
+                                    <span>{{coins.previous}}</span>
+                                </div>                                    
+                            </div>
+                            <div class="pull-right"><img style="margin-right: 5px;margin-top: 4px;" src="img/small-coin-icon.png" class="img-responsive" /></div>
+                    </div>
+                    <div class="width-per expressions">+</div>
+                    <div class="coin-sect">
+                            <div class="pull-left ErasMediumITC"><div>New</div>
+                                <div>
+                                    <span>{{coins.new}}</span>
+                                </div>                                    
+                            </div>
+                            <div class="pull-right"><img style="margin-right: 5px;margin-top: 4px;" src="img/small-coin-icon.png" class="img-responsive" /></div>
+                    </div>
+                    <div class="expressions">=</div>
+                    <div class="coin-sect">
+                            <div class="pull-left ErasMediumITC">
+                                <div>Total</div>
+                                <div>
+                                     <span>{{coins.total}}</span>
+                                </div>                                    
+                            </div>
+                            <div class="pull-right"><img style="margin-right: 5px;margin-top: 4px;" src="img/small-coin-icon.png" class="img-responsive" /></div>
+                    </div>
+      </div>
+    </div>
+</div>

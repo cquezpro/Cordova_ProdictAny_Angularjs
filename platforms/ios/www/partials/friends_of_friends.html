@@ -1,0 +1,47 @@
+<!--<div class="blank-div">&nbsp;</div>-->
+   <div class="container-fluid">
+		<div class="row content-wrapper">
+			<div class="search-category margin10">
+                            <input type="text" name="txtUsername" class="search-input" value="Search Friends" ng-model="txtUsername" placeholder="Search Friends">
+			</div>
+			<div class="clearfix"></div>
+		<div class="swiper-container three-rows">
+		<div class="swiper-wrapper">
+		  <div class="swiper-slide" ng-repeat="c in FriendList | filter:txtUsername">
+			<div class=" margin-top-bottom-10">
+				<div class="ranking-list-wrapper" ng-if="c.id!=logged_in_user_id">
+					<div class="col-xs-12 row" style="margin-left:-5px;">{{c.username}}</div>
+					<div class="col-xs-12 noPadding">
+					<div class="col-xs-9 noPadding"><img ng-click="go_to_page_direct('profile', {{c.id}}, c.username)" src="{{c.photo}}" class="img-responsive" /></div>
+					<div class="col-xs-3 noPadding">
+						<img style="margin:2px 10px 10px 0" class="img-responsive" src="img/hitman.png"  ng-click="challengeToEntity('{{c.id}}','user')" />
+						<div class="clearfix"></div>
+						<img style="padding-right: 5px;" ng-click="go_to_page_direct('discussion', {{c.id}}, c.username)" class="img-responsive" src="img/msg-icon.png"/>
+					</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="friend-wrapper"><span ng-click="friend_unfriend({{c.status}}, {{c.id}})" id="{{c.id}}_frnd_unfrnd" rel="0">{{c.status_str}}</span></div>
+				</div>
+                
+                
+                <div class="ranking-list-wrapper" ng-if="c.id==logged_in_user_id">
+					<div class="col-xs-12 row" style="margin-left:-5px;">{{c.username}}</div>
+					<div class="col-xs-12 noPadding">
+					<div class="col-xs-9 noPadding"><img ng-click="go_to_page_direct('my_profile')" src="{{c.photo}}" class="img-responsive" /></div>
+<!--					<div class="col-xs-3 noPadding">
+						<img style="margin:2px 10px 10px 0" class="img-responsive" src="img/hitman.png"  ng-click="challengeToEntity('{{c.id}}','user')" />
+						<div class="clearfix"></div>
+						<img style="padding-right: 5px;" ng-click="go_to_page_direct('discussion', {{c.id}}, c.username)" class="img-responsive" src="img/msg-icon.png"/>
+					</div>-->
+					</div>
+					<div class="clearfix"></div>
+					<div class="friend-wrapper"><span id="{{c.id}}_frnd_unfrnd" rel="0">Me</span></div>
+				</div>
+			</div>
+        </div>
+            
+		</div>
+		<div class="pagination3"></div>
+	</div>
+  </div>
+</div> 

@@ -1,0 +1,1 @@
+alert(“inside iap.js”);
